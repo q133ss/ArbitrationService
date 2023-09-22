@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $users = User::orderBy('created_at', 'DESC')->get();
-        return view('admin.users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -22,7 +22,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**

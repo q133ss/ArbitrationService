@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', 'Пользователи')
 @section('content')
+    <a href="{{route('admin.users.create')}}" class="btn btn-primary mb-3">Добавить</a>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -20,7 +21,7 @@
                 <td>{{$user->role->name}}</td>
                 <td>{{\Carbon\Carbon::parse($user->created_at)->format('d.m.Y')}}</td>
                 <td>
-                    <a href="#" class="btn btn-primary">Изменить</a>
+                    <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-primary">Изменить</a>
                 </td>
             </tr>
             @endforeach
