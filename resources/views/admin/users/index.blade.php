@@ -1,6 +1,11 @@
 @extends('layouts.dashboard')
 @section('title', 'Пользователи')
 @section('content')
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <a href="{{route('admin.users.create')}}" class="btn btn-primary mb-3">Добавить</a>
     <div class="table-responsive">
         <table class="table">

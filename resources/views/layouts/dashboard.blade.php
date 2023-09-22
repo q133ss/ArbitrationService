@@ -209,6 +209,7 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="/assets/js/script.js"></script>
+@yield('scripts')
 <!-- login js-->
 <!-- Plugin used-->
 </body>
