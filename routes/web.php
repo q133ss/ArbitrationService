@@ -28,6 +28,8 @@ Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index
 Route::prefix('dashboard')->group(function(){
     Route::name('admin.')->middleware('is.admin')->group(function(){
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
+        Route::get('/requests', [App\Http\Controllers\Admin\RequestController::class, 'index'])->name('requests');
+        Route::get('/requests/{action}/{id}', [App\Http\Controllers\Admin\RequestController::class, 'action'])->name('requests.action');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){

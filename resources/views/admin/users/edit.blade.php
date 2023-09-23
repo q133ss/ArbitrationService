@@ -17,6 +17,9 @@
                     @csrf
                     <input type="hidden" name="id" value="{{$user->id}}">
                     <div class="col-md-12">
+                        <label class="form-label" for="inputName">Дата регистрации: {{\Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i')}}</label>
+                    </div>
+                    <div class="col-md-12">
                         <label class="form-label" for="inputName">Имя</label>
                         <input class="form-control" name="name" id="inputName" value="{{$user->name}}" type="text" placeholder="Имя">
                     </div>
