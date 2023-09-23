@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
+
+    public function offers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Offer::class, 'user_offer','user_id','offer_id')->withPivot(['approved']);
+    }
 }

@@ -14,6 +14,5 @@
 <a href="{{route('login')}}">Вход</a>
 <br>
 <a href="{{route('register')}}">Регистрация</a>
-<a href="{{route('dashboard')}}">Панель управления</a>
 </body>
 </html>
