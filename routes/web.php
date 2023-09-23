@@ -17,15 +17,19 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
-Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
+Route::middleware('guest')->group(function (){
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
+});
 
 Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-Route::prefix('dashboard')->group(function(){
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+    Route::post('/clear/notifications', [App\Http\Controllers\NotificationController::class, 'clear'])->name('clear.notifications');
+
     Route::name('admin.')->middleware('is.admin')->group(function(){
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
         Route::get('/requests', [App\Http\Controllers\Admin\RequestController::class, 'index'])->name('requests');

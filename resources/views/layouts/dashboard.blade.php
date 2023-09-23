@@ -9,6 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
@@ -79,25 +80,8 @@
                         0 P
                     </li>
                     <li class="onhover-dropdown">
-                        <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">4                                </span></div>
-                        <ul class="notification-dropdown onhover-show-div">
-                            <li><i data-feather="bell"></i>
-                                <h6 class="f-18 mb-0">Уведомления</h6>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-circle-o me-3 font-primary"> </i>Delivery processing <span class="pull-right">10 min.</span></p>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-circle-o me-3 font-success"></i>Order Complete<span class="pull-right">1 hr</span></p>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-circle-o me-3 font-info"></i>Tickets Generated<span class="pull-right">3 hr</span></p>
-                            </li>
-                            <li>
-                                <p><i class="fa fa-circle-o me-3 font-danger"></i>Delivery Complete<span class="pull-right">6 hr</span></p>
-                            </li>
-                            <li><a class="btn btn-primary" href="#">Смотреть все</a></li>
-                        </ul>
+                        <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary" id="notification_count">{{Auth()->User()->notifications()->count()}}</span></div>
+                        @include('inc.notifications')
                     </li>
                     <li>
                         <div class="mode"><i class="fa fa-moon-o"></i></div>
@@ -209,6 +193,22 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="/assets/js/script.js"></script>
+<script>
+    $('#clearNotificationsBtn').click(function(){
+        $.ajax({
+            url: '{{route('clear.notifications')}}',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data){
+                $('.notification-message').remove();
+                $('#clearNotificationsBtn').remove();
+                $('#notification_count').text('0');
+            }
+        });
+    });
+</script>
 @yield('scripts')
 <!-- login js-->
 <!-- Plugin used-->
