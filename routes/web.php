@@ -34,6 +34,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
         Route::get('/requests', [App\Http\Controllers\Admin\RequestController::class, 'index'])->name('requests');
         Route::get('/requests/{action}/{id}', [App\Http\Controllers\Admin\RequestController::class, 'action'])->name('requests.action');
+        Route::resource('offers', App\Http\Controllers\Admin\OffersController::class)->except('show');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){
