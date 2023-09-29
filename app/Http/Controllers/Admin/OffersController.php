@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OffersController\StoreRequest;
+use App\Models\File;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OffersController extends Controller
 {
@@ -38,7 +40,17 @@ class OffersController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Offer::create($request->validated());
+        $offer = Offer::create($request->validated());
+        if($request->file('files') != null) {
+            foreach ($request->file('files') as $file) {
+                File::create([
+                    'category' => 'materials',
+                    'src' => '/storage/'.$file->store('offers', 'public'),
+                    'fileable_type' => 'App\Models\Offer',
+                    'fileable_id' => $offer->id
+                ]);
+            }
+        }
         return to_route('admin.offers.index')->withSuccess('Офер успешно добавлен!');
     }
 
@@ -63,7 +75,17 @@ class OffersController extends Controller
      */
     public function update(StoreRequest $request, string $id)
     {
-        Offer::findOrFail($id)->update($request->validated());
+        $offer = Offer::findOrFail($id)->update($request->validated());
+        if($request->file('files') != null) {
+            foreach ($request->file('files') as $file) {
+                File::create([
+                    'category' => 'materials',
+                    'src' => '/storage/'.$file->store('offers', 'public'),
+                    'fileable_type' => 'App\Models\Offer',
+                    'fileable_id' => $id
+                ]);
+            }
+        }
         return to_route('admin.offers.index')->withSuccess('Офер успешно обновлен!');
     }
 
@@ -74,5 +96,18 @@ class OffersController extends Controller
     {
         Offer::findOrFail($id)->delete();
         return to_route('admin.offers.index')->withSuccess('Офер успешно удален!');
+    }
+
+    public function deleteFile(Request $request)
+    {
+        $file = str_replace('/storage/', '', $request->img);
+        if(Storage::disk('public')->exists($file)) {
+            Storage::disk('public')->delete($file);
+            File::where('src',$request->img)->delete();
+        }else{
+            return Response()->json('Not Founded', 404);
+        }
+
+        return true;
     }
 }

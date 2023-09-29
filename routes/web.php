@@ -34,6 +34,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
         Route::get('/requests', [App\Http\Controllers\Admin\RequestController::class, 'index'])->name('requests');
         Route::get('/requests/{action}/{id}', [App\Http\Controllers\Admin\RequestController::class, 'action'])->name('requests.action');
+        Route::post('/offers/delete-file/', [App\Http\Controllers\Admin\OffersController::class, 'deleteFile'])->name('offers.delete.file');
         Route::resource('offers', App\Http\Controllers\Admin\OffersController::class)->except('show');
     });
 

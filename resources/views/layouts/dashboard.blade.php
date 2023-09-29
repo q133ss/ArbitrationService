@@ -36,6 +36,7 @@
     <link id="color" rel="stylesheet" href="/assets/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+    @yield('meta')
 </head>
 <body onload="startTime()">
 <div class="loader-wrapper">

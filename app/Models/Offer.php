@@ -14,4 +14,9 @@ class Offer extends Model
     {
         return $this->hasOne(User::class, 'id', 'advertiser_id');
     }
+
+    public function files(): array
+    {
+        return $this->morphMany(File::class, 'fileable')->where('category', 'materials')->pluck('src')->all();
+    }
 }

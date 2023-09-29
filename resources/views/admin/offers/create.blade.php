@@ -7,7 +7,7 @@
                 <div class="text-danger mb-3">{{$errors->first()}}</div>
             @endif
             <div class="card-wrapper rounded-3">
-                <form class="row g-3" method="POST" action="{{route('admin.offers.store')}}">
+                <form class="row g-3" method="POST" action="{{route('admin.offers.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-12">
                         <label class="form-label" for="inputName">Название</label>
@@ -40,6 +40,12 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="inputPassword4">Файлы</label>
+                        <input type="file" multiple name="files[]" class="form-control">
+                    </div>
+
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Создать</button>
                     </div>
