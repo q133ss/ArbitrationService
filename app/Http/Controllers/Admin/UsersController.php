@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UsersController\BalanceRequest;
 use App\Http\Requests\UsersController\StoreRequest;
 use App\Http\Requests\UsersController\UpdateRequest;
 use App\Models\Role;
@@ -43,14 +44,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -71,6 +64,12 @@ class UsersController extends Controller
         }
         User::findOrFail($id)->update($data);
         return to_route('admin.users.edit', $id);
+    }
+
+    public function balance(BalanceRequest $request, int $id)
+    {
+        User::findOrFail($id)->update(['balance' => $request->balance]);
+        return true;
     }
 
     /**

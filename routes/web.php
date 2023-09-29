@@ -31,6 +31,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::post('/clear/notifications', [App\Http\Controllers\NotificationController::class, 'clear'])->name('clear.notifications');
 
     Route::name('admin.')->middleware('is.admin')->group(function(){
+        Route::post('users/balance/{id}', [App\Http\Controllers\Admin\UsersController::class, 'balance']);
         Route::resource('users', App\Http\Controllers\Admin\UsersController::class);
         Route::get('/requests', [App\Http\Controllers\Admin\RequestController::class, 'index'])->name('requests');
         Route::get('/requests/{action}/{id}', [App\Http\Controllers\Admin\RequestController::class, 'action'])->name('requests.action');

@@ -1,5 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Изменить пользователя '.$user->name)
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+@endsection
 @section('content')
     @if(session()->has('success'))
         <div class="alert alert-success">
@@ -61,6 +64,14 @@
                     @csrf
                     <button id="confirm" class="btn btn-link text-danger mt-3">Удалить</button>
                 </form>
+
+                <h5 class="mt-3">Баланс</h5>
+                <div class="border p-3 row">
+                    <div class="col-7">
+                        <input type="text" class="form-control" id="balance" value="{{$user->balance}}">
+                    </div>
+                    <button type="button" class="btn btn-danger col-2 changeBalanceBtn">Изменить баланс</button>
+                </div>
             </div>
         </div>
     </div>
@@ -72,6 +83,26 @@
             if(!alert){
                 return false;
             }
+        });
+
+        $('.changeBalanceBtn').click(function (){
+            let conf = confirm('Вы хотите изменить баланс?');
+            if(!conf){
+                return false;
+            }
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url : "/dashboard/users/balance/{{$user->id}}",
+                data : {
+                    'balance': $('#balance').val()
+                },
+                type : 'POST',
+                success : function(result){
+                    alert('Баланс успешно изменен!');
+                }
+            });
         });
     </script>
 @endsection
