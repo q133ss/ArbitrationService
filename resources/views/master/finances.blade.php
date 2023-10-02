@@ -1,14 +1,37 @@
 @extends('layouts.dashboard')
 @section('title', 'Финансы')
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+@endsection
 @section('content')
     <h3>Ваш баланс: {{Auth()->User()->balance}} ₽</h3>
-    <div class="border p-3 mb-2 d-flex justify-content-between">
-        <div><strong>Ваша банковская карта:</strong> 2202 0513 **** 0000</div>
-        <a class="btn-link">Изменить</a>
+    <h6 class="mt-4">Банковские карты</h6>
+    @if($cards->isEmpty())
+        <span>У вас нет добавленных банковских карт.</span>
+    @endif
+    <div id="cards">
+    @foreach($cards as $card)
+        <div class="border p-3 mb-2 d-flex justify-content-between">
+            <div>{{$card->card}}</div>
+            <a class="btn-link text-danger">Удалить</a>
+        </div>
+    @endforeach
     </div>
-    <button class="btn btn-info mb-3">Запросить вывод средств</button>
+    <button class="btn btn-primary" onclick="openForm()">Добавить карту</button>
+    <button class="btn btn-info">Запросить вывод средств</button>
 
-    <div id="chart"></div>
+    <div id="chart" class="mt-4"></div>
+
+    <div id="addCard" class="w-100 h-100 p-2 bg-white">
+        <button type="button" class="add_card_close btn">X</button>
+        <div class="addCardWrap h-100 d-grid align-items-center">
+            <div class="row w-75 addCardWrap">
+                <div class="text-danger" id="cardError"></div>
+                <input type="text" id="cardNumberInput" class="form-control d-block col-sm" placeholder="0000 0000 0000 0000">
+                <button type="button" onclick="addCard()" class="btn btn-primary d-block col-sm-3">Добавить карту</button>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
@@ -53,5 +76,70 @@
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+
+        function openForm(){
+            $('#addCard').addClass('open');
+        }
+
+        $('.add_card_close').click(function (){
+            $('#addCard').removeClass('open');
+        });
+
+        function addCard(){
+            let card = $('#cardNumberInput').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url : "/dashboard/master/add-card/",
+                data : {
+                    card
+                },
+                type : 'POST',
+                success : function(result){
+                    $('#addCard').removeClass('open');
+                    $('#cards').append(
+                        '<div class="border p-3 mb-2 d-flex justify-content-between">'+
+                            '<div>'+result.card+'</div>'+
+                            '<a class="btn-link text-danger">Удалить</a>'+
+                        '</div>'
+                    );
+                },
+                error: function (xhr){
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        $('#cardError').text(value);
+                    });
+                }
+            });
+        }
     </script>
+    <style>
+        #addCard{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            display: none;
+        }
+
+        #addCard.open{
+            display: block;
+        }
+
+        .addCardWrap{
+            margin: 0 auto;
+        }
+
+        .add_card_close{
+            position: relative;
+            left: 95%;
+        }
+
+        @media screen and (max-width: 526px){
+            .add_card_close{
+                position: relative;
+                left: 90%;
+            }
+        }
+    </style>
 @endsection

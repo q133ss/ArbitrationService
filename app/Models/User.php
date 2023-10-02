@@ -71,4 +71,9 @@ class User extends Authenticatable
         }
         return $query;
     }
+
+    public function cards(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(UserCard::class, 'user_id', 'id');
+    }
 }

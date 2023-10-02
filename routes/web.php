@@ -22,8 +22,9 @@ Route::middleware('guest')->group(function (){
     Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
     Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
     Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
-    Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 });
+
+Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 
 Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
@@ -49,6 +50,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/payments', [App\Http\Controllers\Master\PaymentsController::class, 'index'])->name('payments');
 
         Route::get('/finances', [App\Http\Controllers\Master\FinanceController::class, 'index'])->name('finances');
+        Route::post('/add-card', [App\Http\Controllers\Master\FinanceController::class, 'addCard'])->name('finances.add.card');
     });
 });
 
