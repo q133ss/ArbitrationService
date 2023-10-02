@@ -38,6 +38,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/requests/{action}/{id}', [App\Http\Controllers\Admin\RequestController::class, 'action'])->name('requests.action');
         Route::post('/offers/delete-file/', [App\Http\Controllers\Admin\OffersController::class, 'deleteFile'])->name('offers.delete.file');
         Route::resource('offers', App\Http\Controllers\Admin\OffersController::class)->except('show');
+        Route::get('withdraws', [App\Http\Controllers\Admin\WithdrawController::class, 'index'])->name('withdraws');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){
@@ -51,6 +52,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
         Route::get('/finances', [App\Http\Controllers\Master\FinanceController::class, 'index'])->name('finances');
         Route::post('/add-card', [App\Http\Controllers\Master\FinanceController::class, 'addCard'])->name('finances.add.card');
+    });
+
+    Route::name('adv.')->prefix('advertiser')->middleware('is.adv')->group(function (){
+        Route::get('/offers', [App\Http\Controllers\Adv\OffersController::class, 'index'])->name('offers');
     });
 });
 

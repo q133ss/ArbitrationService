@@ -5,13 +5,6 @@
                                 <li class="back-btn"><a href="index.html" data-bs-original-title="" title=""><img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt=""></a>
                                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                 </li>
-{{--                                <li class="sidebar-list">--}}
-{{--                                    <label class="badge badge-success">2</label><a class="sidebar-link sidebar-title" href="#" data-bs-original-title="" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="lan-3">Dashboards</span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>--}}
-{{--                                    <ul class="sidebar-submenu" style="display: none;">--}}
-{{--                                        <li><a class="lan-4" href="index.html" data-bs-original-title="" title="">Default</a></li>--}}
-{{--                                        <li><a class="lan-5" href="dashboard-02.html" data-bs-original-title="" title="">Ecommerce</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{route('dashboard')}}" data-bs-original-title="" title="">
@@ -24,9 +17,9 @@
                                 </li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.users.index')}}" data-bs-original-title="" title="">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('adv.offers')}}" data-bs-original-title="" title="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                        <span>Пользователи</span>
+                                        <span>Мои оферы</span>
                                         <div class="according-menu">
                                             <i class="fa fa-angle-right"></i>
                                         </div>
@@ -34,8 +27,18 @@
                                 </li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.withdraws')}}" data-bs-original-title="" title="">
+                                    <a class="sidebar-link sidebar-title link-nav" href="#" data-bs-original-title="" title="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                        <span>Лиды</span>
+                                        <div class="according-menu">
+                                            <i class="fa fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="#" data-bs-original-title="" title="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-radio"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
                                         <span>Выплаты</span>
                                         <div class="according-menu">
                                             <i class="fa fa-angle-right"></i>
@@ -44,29 +47,9 @@
                                 </li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.requests')}}" data-bs-original-title="" title="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
-                                        <span>Заявки</span>
-                                        <div class="according-menu">
-                                            <i class="fa fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.offers.index')}}" data-bs-original-title="" title="">
+                                    <a class="sidebar-link sidebar-title link-nav" href="#" data-bs-original-title="" title="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-radio"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
-                                        <span>Оферы</span>
-                                        <div class="according-menu">
-                                            <i class="fa fa-angle-right"></i>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{route('dashboard')}}" data-bs-original-title="" title="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-radio"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
-                                        <span>Номера</span>
+                                        <span>Финансы</span>
                                         <div class="according-menu">
                                             <i class="fa fa-angle-right"></i>
                                         </div>

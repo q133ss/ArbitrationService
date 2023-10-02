@@ -8,6 +8,7 @@ use App\Http\Requests\UsersController\StoreRequest;
 use App\Http\Requests\UsersController\UpdateRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
