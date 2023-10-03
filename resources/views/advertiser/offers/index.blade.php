@@ -11,9 +11,9 @@
                 @endif
                 <div class="tab-content" id="top-tabContent">
                     <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                        <div class="row">
                             @foreach($offers as $offer)
-                                <div class="col-xxl-4 col-md-12">
+                            <div class="row">
+                                <div class="col col-md-12">
                                     <div class="project-box">
                                         <h6>{{$offer->name}}</h6>
                                         <div class="media">
@@ -29,11 +29,11 @@
                                         <p>
                                             {{$offer->except}}
                                         </p>
-                                        <a href="{{route('master.offers.show', $offer->id)}}" class="btn btn-info">Подробнее</a>
+                                        <a href="{{route('adv.offers.show', $offer->id)}}" class="btn btn-info">Подробнее</a>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
-                        </div>
                     </div>
                 </div>
             </div>

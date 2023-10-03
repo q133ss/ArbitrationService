@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Lead;
 use App\Models\Offer;
 use App\Models\Role;
 use App\Models\User;
@@ -132,6 +133,24 @@ class DatabaseSeeder extends Seeder
         foreach ($offers as $offer){
             $offer['except'] = 'Тинькофф Мобайл – это виртуальный мобильный оператор. Здесь нет тарифов в привычном понимании. Клиент может самостоятельно собрать подходящий тариф';
             Offer::create($offer);
+        }
+
+        $leads = [
+            '7(999)888-77-66',
+            '7(111)222-33-44',
+            '7(999)777-77-11',
+            '7(999)321-32-23'
+        ];
+
+        $statuses = ['hold', 'cancel', 'accept'];
+
+        foreach ($leads as $lead) {
+            Lead::create([
+                'offer_id' => rand(1,2),
+                'status' => $statuses[rand(0,2)],
+                'master_id' => User::where('email', 'master@email.net')->pluck('id')->first(),
+                'phone' => $lead
+            ]);
         }
     }
 }
