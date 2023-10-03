@@ -57,6 +57,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Offer::class, 'user_offer','user_id','offer_id')->withPivot(['approved']);
     }
 
+    public function acceptedOffers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Offer::class, 'user_offer','user_id','offer_id')
+            ->withPivot(['approved'])
+            ->wherePivot('approved', 'approved');
+    }
+
     /**
      * Возвращает либо все,
      * Либо не прочитанные
