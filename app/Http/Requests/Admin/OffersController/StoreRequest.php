@@ -39,7 +39,9 @@ class StoreRequest extends FormRequest
                         $fail('Данный пользователь не является рекламодателем');
                     }
                 }
-            ]
+            ],
+            'hold' => 'required|string',
+            'vector' => 'required|string'
         ];
     }
 
@@ -64,7 +66,13 @@ class StoreRequest extends FormRequest
 
             'advertiser_id.required' => 'Укажите рекламодателя',
             'advertiser_id.integer' => 'Поле рекламодатель должно быть числом',
-            'advertiser_id.exists' => 'Указанного рекламодателя не существует'
+            'advertiser_id.exists' => 'Указанного рекламодателя не существует',
+
+            'hold.required' => 'Введите холд',
+            'hold.string' => 'Холд должен быть строкой',
+
+            'vector.required' => 'Введите направление',
+            'vector.string' => 'Направление должно быть строкой'
         ];
     }
 }

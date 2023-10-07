@@ -40,7 +40,13 @@ class OffersController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $offer = Offer::create($request->validated());
+        $data = $request->validated();
+        $data['for_partner'] = json_encode($request->for_partner);
+        $data['for_client'] = json_encode($request->for_client);
+        $data['distinctive'] = json_encode($request->distinctive);
+
+        $offer = Offer::create($data);
+
         if($request->file('files') != null) {
             foreach ($request->file('files') as $file) {
                 File::create([
@@ -75,7 +81,12 @@ class OffersController extends Controller
      */
     public function update(StoreRequest $request, string $id)
     {
-        $offer = Offer::findOrFail($id)->update($request->validated());
+        $data = $request->validated();
+        $data['for_partner'] = json_encode($request->for_partner);
+        $data['for_client'] = json_encode($request->for_client);
+        $data['distinctive'] = json_encode($request->distinctive);
+        $offer = Offer::findOrFail($id)->update($data);
+
         if($request->file('files') != null) {
             foreach ($request->file('files') as $file) {
                 File::create([

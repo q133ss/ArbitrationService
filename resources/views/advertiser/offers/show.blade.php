@@ -26,6 +26,44 @@
                         <p class="form-control">{{$offer->description}}</p>
                     </div>
 
+                    <div class="col-md-12" id="forPartners">
+                        <label class="form-label" for="inputName">Преимущества данного оффера для партнера</label>
+                        @foreach(json_decode($offer->for_partner) as $k => $partner)
+                            <div class="d-flex gap-2 mt-2" id="partner_row_{{$k}}">
+                                <span class="form-control" name="for_partner[]" id="inputName" type="text" placeholder="Преимущество">{{$partner}}</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="col-md-12" id="forClients">
+                        <label class="form-label" for="inputName">Преимущества для клиента</label>
+                        @foreach(json_decode($offer->for_client) as $k => $client)
+                            <div class="d-flex gap-2 mt-2" id="client_row_{{$k}}">
+                                <span class="form-control" name="for_client[]" id="inputName" type="text" placeholder="Преимущество">{{$client}}</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="col-md-12" id="distinctive">
+                        <label class="form-label" for="inputName">Отличительные особенности</label>
+
+                        @foreach(json_decode($offer->distinctive) as $k => $distinctive)
+                            <div class="d-flex gap-2 mt-2" id="distinctive_{{$k}}">
+                                <span class="form-control" name="distinctive[]" id="inputName" type="text" placeholder="Преимущество">{{$distinctive}}</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="inputPassword4">Холд</label>
+                        <input class="form-control" name="hold" value="{{$offer->hold}}" id="inputPassword4" type="text" placeholder="24 часа">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="inputPassword4">Направление</label>
+                        <input class="form-control" name="vector" value="{{$offer->vector}}" id="inputPassword4" type="text" placeholder="Ремонт БТ">
+                    </div>
+
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Цель</label>
                         <span class="form-control">{{$offer->target}}</span>
