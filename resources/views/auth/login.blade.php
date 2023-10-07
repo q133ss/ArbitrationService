@@ -2,7 +2,12 @@
 @section('title', 'Вход')
 @section('content')
     <div>
-        <div><a class="logo" href="/"><img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+        <div>
+            <a class="logo" href="/">
+                <img class="img-fluid for-light" src="../assets/images/logo.svg" alt="looginpage">
+                <img class="img-fluid for-dark" src="../assets/images/logo.svg" alt="looginpage">
+            </a>
+        </div>
         <div class="login-main">
             @if ($errors->any())
                 <div class="text-danger mb-3">{{$errors->first()}}</div>

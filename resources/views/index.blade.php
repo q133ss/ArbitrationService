@@ -9,7 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-Тут будет лендинг
 <br>
 <a href="{{route('login')}}">Вход</a>
 <br>

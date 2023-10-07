@@ -29,8 +29,8 @@
         $(window).on('scroll', function () {
             if ($(this).scrollTop() < 600) {
                 $(".sidebar-list").removeClass("hoverd");
-            }         
-        });   
+            }
+        });
       }
 
     /*----------------------------------------
@@ -120,10 +120,26 @@
             $("body").removeClass("offcanvas");
         }
     });
+
+    let bodyTheme = sessionStorage.getItem('body');
+
+    if(bodyTheme == 'dark'){
+        $('body').addClass("dark-only");
+    }
+
     $(".mode").on("click", function () {
-        $('.mode i').toggleClass("fa-moon-o").toggleClass("fa-lightbulb-o");
+        if(bodyTheme !== 'dark'){
+            sessionStorage.setItem("body", 'dark');
+            $('.mode i').removeClass("fa-lightbulb-o");
+            $('.mode i').addClass("fa-moon-o");
+        }else{
+            sessionStorage.setItem("body", 'white');
+            $('.mode i').addClass("fa-lightbulb-o");
+            $('.mode i').removeClass("fa-moon-o");
+        }
         $('body').toggleClass("dark-only");
         var color = $(this).attr("data-attr");
+
         localStorage.setItem('body', 'dark-only');
     });
 

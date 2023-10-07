@@ -118,7 +118,11 @@
         <!-- Page Sidebar Start-->
         <div class="sidebar-wrapper">
             <div>
-                <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="/assets/images/logo/logo.png" alt=""><img class="img-fluid for-dark" src="/assets/images/logo/logo_dark.png" alt=""></a>
+                <div class="logo-wrapper">
+                    <a href="index.html">
+                        <img class="img-fluid for-light" src="/assets/images/logo.svg" alt="">
+                        <img class="img-fluid for-dark" src="/assets/images/logo.svg" alt="">
+                    </a>
                     <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                 </div>
                 <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid" src="/assets/images/logo/logo-icon.png" alt=""></a></div>
