@@ -33,10 +33,7 @@
 })(jQuery);
 
 // second demo of simple mde
-var sample = [
-    "### Instructions",
-    "Enter text in the area on the left. For more info, click the ? (help) icon in the menu."
-]
+var sample = [""]
 var simplemde = new SimpleMDE({element: $("#smde")[0], toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list", "ordered-list", "|", "link", "image", "|", "guide"]});
 $(document).ready(function() {
     writeSample();

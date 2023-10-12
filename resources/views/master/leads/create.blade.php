@@ -39,7 +39,7 @@
                         <input class="form-control" value="{{old('city')}}" name="city" id="inputEmail4" type="text" placeholder="Город">
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Обновить</button>
+                        <button class="btn btn-primary" type="submit">Добавить</button>
                     </div>
                 </form>
             </div>

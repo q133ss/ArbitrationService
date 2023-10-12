@@ -67,6 +67,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'show'])->name('lead.show');
         Route::post('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'update'])->name('leads.update');
     });
+
+    Route::name('operator.')->prefix('operator')->middleware('is.operator')->group(function(){
+        Route::post('/', [App\Http\Controllers\Operator\IndexController::class, 'store'])->name('leads.store');
+    });
 });
 
 

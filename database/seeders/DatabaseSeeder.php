@@ -28,6 +28,10 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Рекламодатель',
                 'tech_name' => 'advertiser'
+            ],
+            [
+                'name' => 'Оператор',
+                'tech_name' => 'operator'
             ]
         ];
 
@@ -55,6 +59,13 @@ class DatabaseSeeder extends Seeder
                 'email' => 'adv@email.net',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'role_id' => Role::where('tech_name', 'advertiser')->pluck('id')->first(),
+                'confirmed' => true
+            ],
+            [
+                'name' => 'Кристина',
+                'email' => 'operator@email.net',
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+                'role_id' => Role::where('tech_name', 'operator')->pluck('id')->first(),
                 'confirmed' => true
             ]
         ];
