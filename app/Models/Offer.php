@@ -19,4 +19,14 @@ class Offer extends Model
     {
         return $this->morphMany(File::class, 'fileable')->where('category', 'materials')->pluck('src')->all();
     }
+
+    /**
+     * Возвращает прошлую версию модели
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function version(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Version::class, 'versionable')->orderBy('created_At', 'desc');
+    }
 }

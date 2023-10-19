@@ -25,7 +25,7 @@
                         @foreach($offers as $offer)
                             <tr>
                                 <th scope="row">{{$offer->id}}</th>
-                                <td>{{$offer->name}}</td>
+                                <td>{{$offer->name}} @if($offer->approved == false)<span class="text-warning">(На рассмотрении)</span>@endif</td>
                                 <td><a href="{{route('admin.users.edit', $offer->advertiser->id)}}">{{$offer->advertiser->name}}</a></td>
                                 <td>{{\Carbon\Carbon::parse($offer->created_at)->format('d.m.Y')}}</td>
                                 <td>

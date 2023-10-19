@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('target')->comment('Цель, например "Покупка дороже 1000 руб, заказ услуги"');
             $table->double('price')->comment('Цена за лид');
             $table->foreignId('advertiser_id')->comment('Рекламодатель');
+            $table->boolean('approved')->default(true);
             $table->timestamps();
         });
     }

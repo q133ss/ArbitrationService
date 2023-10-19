@@ -69,7 +69,11 @@
                 </div>
             </form>
             <div class="header-logo-wrapper col-auto p-0">
-                <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="/assets/images/logo/logo.png" alt=""></a></div>
+                <div class="logo-wrapper">
+                    <a href="index.html">
+                        <img class="img-fluid" src="/assets/images/logo/logo.png" alt="">
+                    </a>
+                </div>
                 <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
             </div>
             <div class="left-header col horizontal-wrapper ps-0">
@@ -120,8 +124,8 @@
             <div>
                 <div class="logo-wrapper">
                     <a href="index.html">
-                        <img class="img-fluid for-light" src="/assets/images/logo.svg" alt="">
-                        <img class="img-fluid for-dark" src="/assets/images/logo.svg" alt="">
+                        <img class="img-fluid for-light" width="50px" src="/assets/images/logo/logo-svg.svg" alt="">
+                        <img class="img-fluid for-dark" width="50px" src="/assets/images/logo/logo-svg.svg" alt="">
                     </a>
                     <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                 </div>

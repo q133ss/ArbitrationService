@@ -9,6 +9,10 @@
             @if ($errors->any())
                 <div class="text-danger mb-3">{{$errors->first()}}</div>
             @endif
+
+            @if($offer->approved == false)
+                <h3>Прошлая версия</h3>
+            @endif
             <div class="card-wrapper rounded-3">
                 <form class="row g-3" method="POST" action="{{route('admin.offers.update', $offer->id)}}" enctype="multipart/form-data">
                     @method('PATCH')
@@ -125,6 +129,95 @@
                     <button id="confirm" class="btn btn-link text-danger mt-3 p-0">Удалить офер</button>
                 </form>
             </div>
+                @php
+                    $version = json_decode($offer->version->data);
+                @endphp
+                @if($offer->approved == false)
+                    <h3 class="m-t-50">Новая версия</h3>
+                <div class="card-wrapper rounded-3">
+                    <form class="row g-3" method="POST" action="{{route('admin.offers.approved', $offer->id)}}">
+                        @csrf
+                        <div class="col-md-12">
+                            <label class="form-label" for="inputName">Название</label>
+                            <input class="form-control" name="name" id="inputName" value="{{$version->name}}" type="text" placeholder="Имя">
+                        </div>
+                        <input type="hidden" name="advertiser_id" value="{{$offer->advertiser_id}}">
+                        <div class="col-md-12">
+                            <label class="form-label" for="except">Краткое описание</label>
+                            <textarea name="except" class="form-control" id="except" cols="30" rows="10">{{$version->except}}</textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="description">Подробное описание</label>
+                            <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{$version->description}}</textarea>
+                        </div>
+
+                        <div class="col-md-12" id="forPartners">
+                            <label class="form-label" for="inputName">Преимущества данного оффера для партнера</label>
+                            @foreach(json_decode($version->for_partner) as $k => $partner)
+                                <div class="d-flex gap-2 mt-2" id="partner_row_{{$k}}">
+                                    <input class="form-control" name="for_partner[]" value="{{$partner}}" id="inputName" type="text" placeholder="Преимущество">
+                                    <button class="btn btn-danger" onclick="rowDelete('partner_row_{{$k}}')" type="button">-</button>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-12" id="forClients">
+                            <label class="form-label" for="inputName">Преимущества для клиента</label>
+
+                            @foreach(json_decode($version->for_client) as $k => $client)
+                                <div class="d-flex gap-2 mt-2" id="client_row_{{$k}}">
+                                    <input class="form-control" name="for_client[]" value="{{$client}}" id="inputName" type="text" placeholder="Преимущество">
+                                    <button class="btn btn-danger" onclick="rowDelete('client_row_{{$k}}')" type="button">-</button>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-12" id="distinctive">
+                            <label class="form-label" for="inputName">Отличительные особенности</label>
+
+                            @foreach(json_decode($version->distinctive) as $k => $distinctive)
+                                <div class="d-flex gap-2 mt-2" id="distinctive_{{$k}}">
+                                    <input class="form-control" name="distinctive[]" value="{{$distinctive}}" id="inputName" type="text" placeholder="Преимущество">
+                                    <button class="btn btn-danger" onclick="rowDelete('distinctive_{{$k}}')" type="button">-</button>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="inputPassword4">Холд</label>
+                            <input class="form-control" name="hold" value="{{$version->hold}}" id="inputPassword4" type="text" placeholder="24 часа">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="inputPassword4">Направление</label>
+                            <input class="form-control" name="vector" value="{{$version->vector}}" id="inputPassword4" type="text" placeholder="Ремонт БТ">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="inputPassword4">Цель</label>
+                            <input class="form-control" name="target" value="{{$version->target}}" id="inputPassword4" type="text" placeholder="Оплаченный заказ">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="inputPassword4">Вознаграждение вебматеру</label>
+                            <input class="form-control" name="price" value="{{$version->price}}" id="inputPassword4" type="text" placeholder="1000">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="advertiser_id">Статус</label>
+                            <select class="form-select" name="approved" id="advertiser_id">
+                                <option value="0">Отклонить</option>
+                                <option value="1">Принять</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+                @endif
+
         </div>
     </div>
 @endsection

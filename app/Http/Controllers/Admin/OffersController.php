@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OffersController\StoreRequest;
 use App\Models\File;
+use App\Models\Notification;
 use App\Models\Offer;
 use App\Models\User;
+use App\Models\Version;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -120,5 +122,42 @@ class OffersController extends Controller
         }
 
         return true;
+    }
+
+    public function approved(StoreRequest $request, int $id)
+    {
+        $offer = Offer::findOrFail($id);
+        $offer->update(['approved' => true]);
+        Version::where('versionable_type', 'App\Models\Offer')->where('versionable_id', $id)->delete();
+
+        if($request->approved == true) {
+            $data = $request->validated();
+            $data['for_partner'] = json_encode($request->for_partner);
+            $data['for_client'] = json_encode($request->for_client);
+            $data['distinctive'] = json_encode($request->distinctive);
+            $offer->update($data);
+
+            if ($request->file('files') != null) {
+                foreach ($request->file('files') as $file) {
+                    File::create([
+                        'category' => 'materials',
+                        'src' => '/storage/' . $file->store('offers', 'public'),
+                        'fileable_type' => 'App\Models\Offer',
+                        'fileable_id' => $id
+                    ]);
+                }
+            }
+            Notification::create([
+                'title' => 'Изменения вашего офера '. $id .' одобрены!',
+                'user_id' => $data['advertiser_id']
+            ]);
+            return to_route('admin.offers.index')->withSuccess('Изменения одобрены!');
+        }
+        Notification::create([
+            'title' => 'Изменения вашего офера '. $id .' отклонены!',
+            'user_id' => $request->advertiser_id
+        ]);
+
+        return to_route('admin.offers.index')->withSuccess('Изменения отклонены!');
     }
 }
