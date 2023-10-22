@@ -40,6 +40,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::post('/offers/approved/{id}', [App\Http\Controllers\Admin\OffersController::class, 'approved'])->name('offers.approved');
         Route::resource('offers', App\Http\Controllers\Admin\OffersController::class)->except('show');
         Route::get('withdraws', [App\Http\Controllers\Admin\WithdrawController::class, 'index'])->name('withdraws');
+        Route::get('withdraw/{id}/{status}', [App\Http\Controllers\Admin\WithdrawController::class, 'withdraw'])->name('withdraw');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){

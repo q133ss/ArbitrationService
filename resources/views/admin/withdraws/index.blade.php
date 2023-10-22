@@ -46,8 +46,10 @@
                                     <span class="{{$color}}">{{$text}}</span>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-info">Завершить</a>
-                                    <a href="#" class="btn btn-danger">Отклонить</a>
+                                    @if($withdrow->status != 'cancel')
+                                    <a href="{{route('admin.withdraw', [$withdrow->id, 'done'])}}" class="btn btn-info">Завершить</a>
+                                    <a href="{{route('admin.withdraw', [$withdrow->id, 'cancel'])}}" class="btn btn-danger">Отклонить</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
