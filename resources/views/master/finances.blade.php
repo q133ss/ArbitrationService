@@ -4,7 +4,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('content')
-    <h3>Ваш баланс: {{Auth()->User()->balance}} ₽</h3>
+    <h3 id="yourBalance">Ваш баланс: {{Auth()->User()->balance}} ₽</h3>
     <h6 class="mt-4">Банковские карты</h6>
     @if($cards->isEmpty())
         <span>У вас нет добавленных банковских карт.</span>
@@ -18,7 +18,7 @@
     @endforeach
     </div>
     <button class="btn btn-primary" onclick="openForm()">Добавить карту</button>
-    <button class="btn btn-info">Запросить вывод средств</button>
+    <button class="btn btn-info" onclick="openWithout()">Запросить вывод средств</button>
 
     <div id="chart" class="mt-4"></div>
 
@@ -29,6 +29,22 @@
                 <div class="text-danger" id="cardError"></div>
                 <input type="text" id="cardNumberInput" class="form-control d-block col-sm" placeholder="0000 0000 0000 0000">
                 <button type="button" onclick="addCard()" class="btn btn-primary d-block col-sm-3">Добавить карту</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="without" class="w-100 h-100 p-2 bg-white">
+        <button type="button" class="withoutCls btn">X</button>
+        <div class="addCardWrap h-100 d-grid align-items-center">
+            <div class="row w-75 addCardWrap">
+                <div class="text-danger" id="withoutError"></div>
+                <select name="card_id" id="cardId" class="form-control mb-3">
+                    @foreach($cards as $card)
+                    <option value="{{$card->id}}">{{$card->card}}</option>
+                    @endforeach
+                </select>
+                <input type="text" id="sumInp" class="form-control d-block mb-3" placeholder="Сумма">
+                <button type="button" onclick="sendQuery()" class="btn btn-primary d-block">Запросить</button>
             </div>
         </div>
     </div>
@@ -81,8 +97,16 @@
             $('#addCard').addClass('open');
         }
 
+        function openWithout(){
+            $('#without').addClass('open');
+        }
+
         $('.add_card_close').click(function (){
             $('#addCard').removeClass('open');
+        });
+
+        $('.withoutCls').click(function (){
+            $('#without').removeClass('open');
         });
 
         function addCard(){
@@ -112,9 +136,38 @@
                 }
             });
         }
+
+        function sendQuery(){
+
+            let cardId = $('#cardId').val();
+            let sumInp = $('#sumInp').val();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url : "/dashboard/master/without/",
+                data : {
+                    'card_id' : cardId,
+                    'sum' : sumInp
+                },
+                type : 'POST',
+                success : function(result){
+                    $('#userBalance').text(result + " ₽");
+                    $('#yourBalance').text(result + " ₽");
+                    $('#without').removeClass('open');
+                    alert('Запрос на вывод успешно отправлен!');
+                },
+                error: function (xhr){
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        $('#withoutError').text(value);
+                    });
+                }
+            });
+        }
     </script>
     <style>
-        #addCard{
+        #addCard , #without{
             position: fixed;
             top: 0;
             left: 0;
@@ -122,7 +175,7 @@
             display: none;
         }
 
-        #addCard.open{
+        #addCard.open, #without.open{
             display: block;
         }
 
@@ -130,13 +183,13 @@
             margin: 0 auto;
         }
 
-        .add_card_close{
+        .add_card_close, .add_card_close{
             position: relative;
             left: 95%;
         }
 
         @media screen and (max-width: 526px){
-            .add_card_close{
+            .add_card_close, .add_card_close{
                 position: relative;
                 left: 90%;
             }

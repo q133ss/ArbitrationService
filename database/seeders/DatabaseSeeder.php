@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'master@email.net',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'role_id' => Role::where('tech_name', 'webmaster')->pluck('id')->first(),
+                'balance' => 7000,
                 'confirmed' => true
             ],
             [

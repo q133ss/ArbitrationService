@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->double('sum');
+            $table->string('card');
             $table->enum('status', ['wait', 'done', 'cancel'])->default('wait');
             $table->timestamps();
         });

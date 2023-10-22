@@ -54,6 +54,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/finances', [App\Http\Controllers\Master\FinanceController::class, 'index'])->name('finances');
         Route::post('/add-card', [App\Http\Controllers\Master\FinanceController::class, 'addCard'])->name('finances.add.card');
 
+        Route::post('/without', [App\Http\Controllers\Master\FinanceController::class, 'without'])->name('finances.without');
+
         Route::get('/leads', [App\Http\Controllers\Master\LeadsController::class, 'index'])->name('leads.index');
         Route::get('/leads/new', [App\Http\Controllers\Master\LeadsController::class, 'create'])->name('leads.create');
         Route::post('/leads/new', [App\Http\Controllers\Master\LeadsController::class, 'store'])->name('leads.store');

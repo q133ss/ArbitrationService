@@ -81,8 +81,8 @@
             </div>
             <div class="nav-right col-8 pull-right right-header p-0">
                 <ul class="nav-menus">
-                    <li>
-                        0 P
+                    <li id="userBalance">
+                        {{Auth()->user()->balance}} ₽
                     </li>
                     <li class="onhover-dropdown">
                         <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary" id="notification_count">{{Auth()->User()->notifications()->count()}}</span></div>
@@ -98,8 +98,8 @@
                             </div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div">
-                            <li><a href="#"><i data-feather="user"></i><span>Профиль </span></a></li>
-                            <li><a href="#"><i data-feather="settings"></i><span>Настройки</span></a></li>
+{{--                            <li><a href="#"><i data-feather="user"></i><span>Профиль </span></a></li>--}}
+{{--                            <li><a href="#"><i data-feather="settings"></i><span>Настройки</span></a></li>--}}
                             <li><a href="{{route('logout')}}"><i data-feather="log-in"> </i><span>Выйти</span></a></li>
                         </ul>
                     </li>
