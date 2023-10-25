@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('status', ['hold', 'cancel', 'accept'])->default('hold');
             $table->foreignId('offer_id');
             $table->foreignId('master_id');
+            $table->boolean('from_form')->default(false)->comment('Добавленно из формы');
             $table->timestamps();
         });
     }

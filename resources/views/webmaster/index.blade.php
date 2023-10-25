@@ -120,9 +120,15 @@
                     <th scope="col">Формы</th>
                     <th scope="col">Звонки</th>
 
-                    <th scope="col">true</th>
-                    <th scope="col">wait</th>
-                    <th scope="col">trash</th>
+                    <th scope="col">
+                        <i class="icon-check-box"></i>
+                    </th>
+                    <th scope="col">
+                        <i class="icon-timer"></i>
+                    </th>
+                    <th scope="col">
+                        <i class="icon-trash"></i>
+                    </th>
 
                     <th scope="col">Всего</th>
                     <th scope="col">Выплачено</th>

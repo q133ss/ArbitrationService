@@ -25,6 +25,7 @@ class LeadsController extends Controller
     {
         $data = $request->validated();
         $data['master_id'] = Auth()->id();
+        $data['from_form'] = true;
         Lead::create($data);
         return to_route('master.leads.index')->withSuccess('Лид успешно добавлен!');
     }
