@@ -23,6 +23,16 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="selectOffer">Офер</label>
+                        <select class="form-select" name="offer_id" id="selectOffer">
+                            @foreach($offers as $offer)
+                                <option @if($offer->id == $number->offer_id) selected @endif value="{{$offer->id}}">{{$offer->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Обновить</button>
                     </div>

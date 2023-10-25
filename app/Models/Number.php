@@ -14,4 +14,9 @@ class Number extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function offer()
+    {
+        return $this->hasOne(Offer::class, 'id', 'offer_id');
+    }
 }

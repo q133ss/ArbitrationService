@@ -42,7 +42,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('withdraws', [App\Http\Controllers\Admin\WithdrawController::class, 'index'])->name('withdraws');
         Route::get('withdraw/{id}/{status}', [App\Http\Controllers\Admin\WithdrawController::class, 'withdraw'])->name('withdraw');
         Route::get('/numbers', [App\Http\Controllers\Admin\NumbersController::class, 'index'])->name('numbers.index');
-        Route::post('/numbers/update', [App\Http\Controllers\Admin\NumbersController::class, 'update'])->name('numbers.get');
+        Route::get('/numbers/update', [App\Http\Controllers\Admin\NumbersController::class, 'update'])->name('numbers.get');
         Route::get('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'edit'])->name('numbers.edit');
         Route::post('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'updateNumber'])->name('numbers.update');
     });
@@ -64,6 +64,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/leads', [App\Http\Controllers\Master\LeadsController::class, 'index'])->name('leads.index');
         Route::get('/leads/new', [App\Http\Controllers\Master\LeadsController::class, 'create'])->name('leads.create');
         Route::post('/leads/new', [App\Http\Controllers\Master\LeadsController::class, 'store'])->name('leads.store');
+
+        Route::get('/numbers', [App\Http\Controllers\Master\NumbersController::class, 'index'])->name('numbers.index');
     });
 
     Route::name('adv.')->prefix('advertiser')->middleware('is.adv')->group(function (){

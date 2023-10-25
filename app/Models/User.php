@@ -83,4 +83,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserCard::class, 'user_id', 'id');
     }
+
+    public function numbers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Number::class, 'user_id', 'id');
+    }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('number')->unique();
             $table->foreignId('user_id')->nullable();
+            $table->foreignId('offer_id')->nullable();
             $table->timestamps();
         });
     }

@@ -22,14 +22,18 @@ class UpdateNumberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id'
+            'user_id' => 'required|exists:users,id',
+            'offer_id' => 'required|exists:users,id'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'user_id.exists' => 'Указанного пользователя не существует'
+            'user_id.exists' => 'Указанного пользователя не существует',
+            'user_id.required' => 'Укажите пользователя',
+            'offer_id.exists' => 'Указанного офера не существует',
+            'offer_id.required' => 'Укажите офер'
         ];
     }
 }

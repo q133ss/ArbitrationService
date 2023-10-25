@@ -1,13 +1,7 @@
 @extends('layouts.dashboard')
-@section('title', 'Номера')
+@section('title', 'Мои номера')
 @section('content')
-    <a href="{{route('admin.numbers.get')}}" class="btn btn-primary mb-3">Обновить</a>
     <div class="card">
-        @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div>
-        @endif
         <div class="card-block row">
             <div class="col-sm-12 col-lg-12 col-xl-12">
                 <div class="table-responsive">
@@ -16,9 +10,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Телефон</th>
-                            <th scope="col">Пользователь</th>
-                            <th scope="col">Офер</th>
-                            <th scope="col">Действия</th>
+                            <th scope="col">Оффер</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,11 +18,7 @@
                             <tr>
                                 <th scope="row">{{$number->id}}</th>
                                 <td>{{$number->number}}</td>
-                                <td>{{$number->user->name ?? "-"}}</td>
-                                <td>{{$number->offer->name ?? "-"}}</td>
-                                <td>
-                                    <a href="{{route('admin.numbers.edit', $number->id)}}" class="btn btn-primary">Изменить</a>
-                                </td>
+                                <td>{{$number->offer->name ?? '-'}}</td>
                             </tr>
                         @endforeach
                         </tbody>

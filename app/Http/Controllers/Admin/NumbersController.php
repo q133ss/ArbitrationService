@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NumbersController\UpdateNumberRequest;
 use App\Models\Number;
+use App\Models\Offer;
 use App\Models\User;
 use App\Services\TelphinService;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class NumbersController extends Controller
 {
     public function index()
     {
-        $numbers = Number::with('user')->get();
+        $numbers = Number::with('user', 'offer')->get();
         return view('admin.numbers.index', compact('numbers'));
     }
 
@@ -32,6 +33,7 @@ class NumbersController extends Controller
     public function edit(int $id)
     {
         $number = Number::findOrFail($id);
+        $offers = Offer::get();
         $users = User::where('id', '!=', Auth()->id())
             ->where('role_id', function ($query){
                 return $query->select('id')
@@ -40,7 +42,7 @@ class NumbersController extends Controller
                     ->limit(1);
             })
             ->get();
-        return view('admin.numbers.edit', compact('number', 'users'));
+        return view('admin.numbers.edit', compact('number', 'users', 'offers'));
     }
 
     public function updateNumber(UpdateNumberRequest $request, int $id)
