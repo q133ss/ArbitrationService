@@ -41,6 +41,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::resource('offers', App\Http\Controllers\Admin\OffersController::class)->except('show');
         Route::get('withdraws', [App\Http\Controllers\Admin\WithdrawController::class, 'index'])->name('withdraws');
         Route::get('withdraw/{id}/{status}', [App\Http\Controllers\Admin\WithdrawController::class, 'withdraw'])->name('withdraw');
+        Route::get('/numbers', [App\Http\Controllers\Admin\NumbersController::class, 'index'])->name('numbers.index');
+        Route::post('/numbers/update', [App\Http\Controllers\Admin\NumbersController::class, 'update'])->name('numbers.get');
+        Route::get('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'edit'])->name('numbers.edit');
+        Route::post('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'updateNumber'])->name('numbers.update');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){
@@ -78,4 +82,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     });
 });
 
+Route::get('/www', function (){
+    return (new App\Services\TelphinService())->getNumbers();
+});
 
