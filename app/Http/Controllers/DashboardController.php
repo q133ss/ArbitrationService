@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if(Auth()->user()->role->tech_name == 'admin'){
             $data = (new DashboardService())->getAdminData();
@@ -20,8 +20,11 @@ class DashboardController extends Controller
         }
 
         if(Auth()->user()->role->tech_name == 'webmaster'){
-            $data = (new DashboardService())->getMasterData();
-            return view(Auth()->user()->role->tech_name.'.index', compact('data'));
+            $data = (new DashboardService())->getMasterData($request);
+            $offers = Auth()->User()->offers;
+            $cities = Lead::whereIn('offer_id', $offers->pluck('id')->all())->where('city', '!=', '')->pluck('city')->unique()->all();
+
+            return view(Auth()->user()->role->tech_name.'.index', compact('data', 'offers', 'cities'));
         }
 
         return view(Auth()->user()->role->tech_name.'.index');

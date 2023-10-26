@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Lead;
 use App\Models\Offer;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DashboardService{
@@ -63,9 +64,14 @@ class DashboardService{
         ];
     }
 
-    public function getMasterData(): array
+    public function getMasterData(Request $request): array
     {
-        $leads = Lead::select('id','created_at', 'from_form', 'offer_id', 'status')->get();//whereIn('offer_id', Auth()->user()->offers->pluck('id')->all())->get();
+        $leads = Lead::withFilter($request)
+            ->whereIn('offer_id', Auth()->user()->offers->pluck('id')->all())
+            ->select('id','created_at', 'from_form', 'offer_id', 'status')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
         $unFormData = [];
         foreach ($leads as $lead){
             $date = Carbon::parse($lead['created_at'])->format('Y-m-d');

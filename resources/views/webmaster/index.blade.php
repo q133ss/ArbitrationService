@@ -1,16 +1,19 @@
 @extends('layouts.dashboard')
 @section('title', 'Главная')
 @section('content')
+{{--    <div class="card">--}}
     <div class="card">
         @include('webmaster.inc.statistic.nav')
         <hr>
 
-        @php
-            $offers = Auth()->User()->offers();
-        @endphp
+        <form action="{{route('dashboard')}}" method="GET" id="submitForm">
+            <input type="hidden" name="offer_id" id="offer_id">
+            <input type="hidden" name="city" id="city">
+            <input type="hidden" name="dates" id="dates">
+        </form>
 
         <div class="d-flex gap-2 p-2">
-            <input class="datepicker-here form-control digits w-25" type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ru">
+            <input class="datepicker-here form-control digits w-25 dates_inp" onchange="test()" type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ru">
 
 {{--            <div class="btn-group">--}}
 {{--                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Направления</button>--}}
@@ -22,9 +25,12 @@
 {{--            </div>--}}
 
             <div class="btn-group">
+{{--                offer_id--}}
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Офферы</button>
                 <ul class="dropdown-menu dropdown-block" style="">
-                    <li><a class="dropdown-item" href="#">Offer1</a></li>
+                    @foreach($offers as $offer)
+                    <li><a class="dropdown-item offer_item" href="#" data-id="{{$offer->id}}">{{$offer->name}}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -32,17 +38,19 @@
 
                 <button class="btn btn-primary dropdown-toggle show" type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">Города</button>
                 <form class="dropdown-menu p-4 form-wrapper dark-form" data-popper-placement="top-start">
-                    <input class="form-control" id="exampleDropdownFormEmail2" type="text" placeholder="">
+{{--                    <input class="form-control" name="city" id="exampleDropdownFormEmail2" type="text" placeholder="">--}}
                     <div class="cities p-0">
-                        <a href="#" class="dropdown-item">Москва</a>
-                        <a href="#" class="dropdown-item">Воронеж</a>
-                        <a href="#" class="dropdown-item">Санкт-Питербург</a>
+                        @foreach($cities as $city)
+                        <a href="#" class="dropdown-item city_item">{{$city}}</a>
+                        @endforeach
                     </div>
                 </form>
             </div>
 
-            <button class="btn btn-primary">Применить</button>
+            <button class="btn btn-primary" type="button" onclick="send()">Применить</button>
         </div>
+
+
     </div>
 
 
@@ -106,4 +114,25 @@
             </table>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        // $('.dates_inp').onchange(function (){
+        //     console.log($(this).val())
+        //    $('#dates').val($(this).val())
+        // });
+
+        function send(){
+            $('#dates').val($('.datepicker-here').val());
+            $('#submitForm').submit();
+        }
+
+        $('.city_item').click(function (){
+           $('#city').val($(this).text());
+        });
+
+        $('.offer_item').click(function (){
+           $('#offer_id').val($(this).data('id'));
+        });
+    </script>
 @endsection
