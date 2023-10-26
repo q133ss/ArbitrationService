@@ -106,12 +106,14 @@
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
+                    <th scope="col">Офер</th>
                     <th scope="col">Трафик</th>
                     <th scope="col" colspan="3">Лиды</th>
                     <th scope="col" colspan="6">Конверсии</th>
                     <th scope="col" colspan="3">Финансы</th>
                 </tr>
                 <tr>
+                    <th scope="col"></th>
                     <th scope="col">Звонки</th>
                     <th scope="col">Всего</th>
                     <th scope="col">Формы</th>
@@ -138,7 +140,8 @@
                 <tbody>
                 @foreach($data as $row)
                 <tr>
-                    <th scope="row">{{$row['calls']}}</th>
+                    <th scope="row">Дщд</th>
+                    <th>{{$row['calls']}}</th>
                     <td>{{$row['lead_all']}}</td>
                     <td>{{$row['lead_form']}}</td>
                     <td>{{$row['lead_calls']}}</td>

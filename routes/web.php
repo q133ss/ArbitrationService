@@ -87,4 +87,3 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 Route::get('/www', function (){
     return (new App\Services\TelphinService())->getNumbers();
 });
-
