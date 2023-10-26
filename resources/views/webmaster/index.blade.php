@@ -45,68 +45,14 @@
         </div>
     </div>
 
-    @php
-    $data = [
-        [
-        'calls' => 45,
-        'lead_all' => 1,
-        'lead_form' => 0,
-        'lead_calls' => 1,
 
-        'conv_all' => 2,
-        'conv_form' => 0,
-        'conv_calls' => 1,
-        'conv_true' => 1,
-        'conv_wait' => 0,
-        'conv_trash' => 0,
-
-        'fin_all' => 950,
-        'fin_paid' => 0,
-        'fin_forecast' => 950
-        ],
-        [
-        'calls' => 25,
-        'lead_all' => 1,
-        'lead_form' => 0,
-        'lead_calls' => 1,
-
-        'conv_all' => 2,
-        'conv_form' => 0,
-        'conv_calls' => 1,
-        'conv_true' => 1,
-        'conv_wait' => 0,
-        'conv_trash' => 0,
-
-        'fin_all' => 550,
-        'fin_paid' => 0,
-        'fin_forecast' => 550
-        ],
-        [
-        'calls' => 5,
-        'lead_all' => 1,
-        'lead_form' => 0,
-        'lead_calls' => 1,
-
-        'conv_all' => 2,
-        'conv_form' => 0,
-        'conv_calls' => 1,
-        'conv_true' => 1,
-        'conv_wait' => 0,
-        'conv_trash' => 0,
-
-        'fin_all' => 350,
-        'fin_paid' => 0,
-        'fin_forecast' => 350
-        ]
-    ];
-    @endphp
 
     <div class="card">
         <div class="table-responsive signal-table p-2">
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Офер</th>
+                    <th scope="col">Дата</th>
                     <th scope="col">Трафик</th>
                     <th scope="col" colspan="3">Лиды</th>
                     <th scope="col" colspan="6">Конверсии</th>
@@ -138,9 +84,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($data as $row)
+                @foreach($data as $k => $row)
                 <tr>
-                    <th scope="row">Дщд</th>
+                    <th scope="row">{{$k}}</th>
                     <th>{{$row['calls']}}</th>
                     <td>{{$row['lead_all']}}</td>
                     <td>{{$row['lead_form']}}</td>

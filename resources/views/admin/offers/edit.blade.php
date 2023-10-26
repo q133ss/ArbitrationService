@@ -129,6 +129,7 @@
                     <button id="confirm" class="btn btn-link text-danger mt-3 p-0">Удалить офер</button>
                 </form>
             </div>
+                @if($offer->version)
                 @php
                     $version = json_decode($offer->version->data);
                 @endphp
@@ -216,6 +217,7 @@
                         </div>
                     </form>
                 </div>
+                @endif
                 @endif
 
         </div>
