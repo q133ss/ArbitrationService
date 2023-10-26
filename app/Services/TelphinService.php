@@ -34,12 +34,12 @@ class TelphinService{
         return $token;
     }
 
-    public function sendGetQuery(string $url)
+    public function sendGetQuery(string $url, $params = [])
     {
-        //bearer token save to sesstion
         $client = new Client();
         $response = $client->request('GET', $this->host.$url, [
-            'headers' => ['Authorization' => 'Bearer '.$this->getToken()]
+            'headers' => ['Authorization' => 'Bearer '.$this->getToken()],
+            'query' => $params
         ]);
         return $response->getBody();
     }
@@ -47,5 +47,14 @@ class TelphinService{
     public function getNumbers()
     {
         return json_decode($this->sendGetQuery("/client/@me/did/"));
+    }
+
+    public function getCalls(array $params)
+    {
+        $data = json_decode($this->sendGetQuery("/client/@me/calls/", $params));
+
+        //$data->calls->duration = продолжительность
+        //$data->calls->from_username = от кого
+        return $data->calls;
     }
 }
