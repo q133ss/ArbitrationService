@@ -42,7 +42,9 @@ class Lead extends Model
                 $query->whereDate('created_at', '>=', Carbon::parse($date[0])->format('Y-m-d'))->whereDate('created_at', '<=', Carbon::parse($date[1])->format('Y-m-d'));
             })
             ->when($request->query('city'), function (Builder $query, $city) {
-                $query->where('city', $city);
+                if($city != 'Города') {
+                    $query->where('city', $city);
+                }
             });
     }
 }

@@ -41,6 +41,14 @@ class UsersController extends Controller
             $data['confirmed'] = true;
         }
         $user = User::create($data);
+
+        $to      = $data['email'];
+        $subject = 'Вы зарегистрированы на '.env('APP_NAME');
+        $message = "Вы зарегистрированы на ".env('APP_NAME')."<br> Email: ".$data['email']."<br> Пароль: ".$request->password;
+        $headers = 'From: info@example.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+
         return to_route('admin.users.edit', $user->id)->withSuccess('Пользователь успешно создан');
     }
 

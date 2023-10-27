@@ -13,7 +13,7 @@
         </form>
 
         <div class="d-flex gap-2 p-2">
-            <input class="datepicker-here form-control digits w-25 dates_inp" onchange="test()" type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ru">
+            <input class="datepicker-here form-control digits w-25 dates_inp" value="{{\Request()->dates}}" type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ru">
 
 {{--            <div class="btn-group">--}}
 {{--                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Направления</button>--}}
@@ -26,8 +26,9 @@
 
             <div class="btn-group">
 {{--                offer_id--}}
-                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Офферы</button>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="offerSelect" data-bs-toggle="dropdown" aria-expanded="false">@if(\Request()->offer_id) {{$offers->where('id', \Request()->offer_id)->pluck('name')->first()}} @elseОфферы@endif</button>
                 <ul class="dropdown-menu dropdown-block" style="">
+                    <li><a class="dropdown-item offer_item" href="#" data-id="">Офферы</a></li>
                     @foreach($offers as $offer)
                     <li><a class="dropdown-item offer_item" href="#" data-id="{{$offer->id}}">{{$offer->name}}</a></li>
                     @endforeach
@@ -36,10 +37,11 @@
 
             <div class="btn-group">
 
-                <button class="btn btn-primary dropdown-toggle show" type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">Города</button>
+                <button class="btn btn-primary dropdown-toggle show" id="cityBtn" type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">@if(\Request()->city) {{\Request()->city}} @elseГорода@endif</button>
                 <form class="dropdown-menu p-4 form-wrapper dark-form" data-popper-placement="top-start">
 {{--                    <input class="form-control" name="city" id="exampleDropdownFormEmail2" type="text" placeholder="">--}}
                     <div class="cities p-0">
+                        <a href="#" class="dropdown-item city_item">Города</a>
                         @foreach($cities as $city)
                         <a href="#" class="dropdown-item city_item">{{$city}}</a>
                         @endforeach
@@ -128,10 +130,12 @@
         }
 
         $('.city_item').click(function (){
+           $('#cityBtn').text($(this).text())
            $('#city').val($(this).text());
         });
 
         $('.offer_item').click(function (){
+           $('#offerSelect').text($(this).text())
            $('#offer_id').val($(this).data('id'));
         });
     </script>

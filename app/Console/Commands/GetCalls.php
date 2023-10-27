@@ -55,13 +55,13 @@ class GetCalls extends Command
                         'created_at' => now()
                     ]);
 
-                    if($number->offer_id != null) {
-                        Lead::create([
-                            'phone' => $call->from_username,
-                            'offer_id' => $number->offer_id,
-                            'master_id' => $number->user_id
-                        ]);
-                    }
+//                    if($number->offer_id != null) {
+//                        Lead::create([
+//                            'phone' => $call->from_username,
+//                            'offer_id' => $number->offer_id,
+//                            'master_id' => $number->user_id
+//                        ]);
+//                    }
                 }
             }
         }

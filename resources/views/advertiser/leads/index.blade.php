@@ -1,7 +1,6 @@
 @extends('layouts.dashboard')
 @section('title', 'Лиды')
 @section('content')
-    <a href="{{route('admin.users.create')}}" class="btn btn-primary mb-3">Добавить</a>
     <div class="card">
         @if(session()->has('success'))
             <div class="alert alert-success">

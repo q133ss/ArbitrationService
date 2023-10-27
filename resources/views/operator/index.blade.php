@@ -37,6 +37,7 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
     @yield('meta')
+    <script src="https://unpkg.com/imask"></script>
 </head>
 <body onload="startTime()">
 <div class="loader-wrapper">
@@ -260,6 +261,11 @@
             }
         });
     });
+
+    IMask(document.getElementById('phoneNumber'), {
+            mask: '+{7}(000)000-00-00'
+        }
+    );
 </script>
 <!-- login js-->
 <!-- Plugin used-->

@@ -80,7 +80,7 @@
 
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Направление</label>
-                        <input class="form-control" name="hold" value="{{old('vector')}}" id="inputPassword4" type="text" placeholder="Ремонт БТ">
+                        <input class="form-control" name="vector" value="{{old('vector')}}" id="inputPassword4" type="text" placeholder="Ремонт БТ">
                     </div>
 
                     <div class="col-md-12">

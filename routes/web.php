@@ -77,6 +77,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/leads', [App\Http\Controllers\Adv\LeadController::class, 'index'])->name('leads.index');
         Route::get('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'show'])->name('lead.show');
         Route::post('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'update'])->name('leads.update');
+        Route::get('/finances', [App\Http\Controllers\Adv\FinanceController::class, 'index'])->name('finances');
+        Route::get('/calls', [App\Http\Controllers\Adv\CallsController::class, 'index'])->name('calls');
     });
 
     Route::name('operator.')->prefix('operator')->middleware('is.operator')->group(function(){
