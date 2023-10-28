@@ -8,6 +8,7 @@ use App\Http\Requests\UsersController\StoreRequest;
 use App\Http\Requests\UsersController\UpdateRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserOperation;
 use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
@@ -77,7 +78,39 @@ class UsersController extends Controller
 
     public function balance(BalanceRequest $request, int $id)
     {
-        User::findOrFail($id)->update(['balance' => $request->balance]);
+        $user = User::findOrFail($id);
+        if($user->role->tech_name == 'advertiser'){
+            if($user->balance < 0){
+                if($user->balance > $request->balance) {
+                    UserOperation::create([
+                        'user_id' => $id,
+                        'sum' => '-'.$user->balance - $request->balance,
+                        'description' => 'Списанно администрацией сайта'
+                    ]);
+                }else{
+                    UserOperation::create([
+                        'user_id' => $id,
+                        'sum' => $request->balance-$user->balance,
+                        'description' => 'Пополнение счета'
+                    ]);
+                }
+            }else{
+                if($user->balance < $request->balance) {
+                    UserOperation::create([
+                        'user_id' => $id,
+                        'sum' => '-'.$user->balance - $request->balance,
+                        'description' => 'Списанно администрацией сайта'
+                    ]);
+                }else{
+                    UserOperation::create([
+                        'user_id' => $id,
+                        'sum' => $request->balance-$user->balance,
+                        'description' => 'Пополнение счета'
+                    ]);
+                }
+            }
+        }
+        $user->update(['balance' => $request->balance]);
         return true;
     }
 

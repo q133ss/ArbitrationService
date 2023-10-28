@@ -88,30 +88,5 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 });
 
 Route::get('/www', function (){
-    //return (new App\Services\TelphinService())->getCalls();
-    $numbers = App\Models\Number::get();
-    foreach ($numbers as $number) {
-        $params = [
-            'start_datetime' => now()->subWeek()->format('Y-m-d H:m:s'),
-            'end_datetime' => now()->format('Y-m-d H:m:s'),
-            'flow' => 'in',
-            'page' => 1,
-            'per_page' => 100000,
-            'did_number' => $number->number
-        ];
-        $calls = (new App\Services\TelphinService())->getCalls($params);
-
-        foreach ($calls as $call) {
-            //dd($call);
-            \DB::table('numbers_calls')->insert([
-                'duration' => $call->duration,
-                'number_from' => $call->from_username,
-                'number_id' => $number->id,
-                'created_at' => now()
-            ]);
-
-
-        }
-    }
 
 });

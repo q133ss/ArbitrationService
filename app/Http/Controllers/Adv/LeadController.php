@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Adv\OfferController\UpdateRequest;
 use App\Models\Lead;
 use App\Models\Offer;
+use App\Models\UserOperation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,6 +36,17 @@ class LeadController extends Controller
         if($request->status != 'hold'){
             //delete!
             DB::table('numbers_calls')->where('number_from', $lead->phone)->delete();
+
+            if($request->status == 'accept') {
+                $balance = Auth()->user()->balance;
+                Auth()->user()->update(['balance' => $balance -= $lead->offer->price]);
+                UserOperation::create([
+                    'lead_id' => $lead->id,
+                    'user_id' => Auth()->id(),
+                    'sum' => -$lead->offer->price,
+                    'description' => 'Списание за заявку'
+                ]);
+            }
         }
 
         $lead->update($request->validated());
