@@ -26,8 +26,8 @@
                                 <td>{{$call->number_from}}</td>
                                 <td>{{$call->duration}}</td>
                                 <td>
-                                    <a href="{{route('adv.lead.show', $call->id)}}" class="btn btn-primary">Подтвердить заявку</a>
-                                    <a href="{{route('adv.lead.show', $call->id)}}" class="btn btn-primary">Отклонить заявку</a>
+                                    <a href="{{route('adv.calls.action', [$call->id, 1])}}" class="btn conf btn-primary">Подтвердить заявку</a>
+                                    <a href="{{route('adv.calls.action', [$call->id, 0])}}" class="btn conf btn-primary">Отклонить заявку</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -37,4 +37,14 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('.conf').click(function(){
+            let conf = confirm();
+            if(!conf){
+                return false;
+            }
+        })
+    </script>
 @endsection

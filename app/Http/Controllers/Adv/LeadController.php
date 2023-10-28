@@ -7,6 +7,7 @@ use App\Http\Requests\Adv\OfferController\UpdateRequest;
 use App\Models\Lead;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LeadController extends Controller
 {
@@ -29,7 +30,14 @@ class LeadController extends Controller
 
     public function update(UpdateRequest $request, $id)
     {
-        Lead::findOrFail($id)->update($request->validated());
+        $lead = Lead::findOrFail($id);
+
+        if($request->status != 'hold'){
+            //delete!
+            DB::table('numbers_calls')->where('number_from', $lead->phone)->delete();
+        }
+
+        $lead->update($request->validated());
         return to_route('adv.leads.index')->withSuccess('Лид успешно обновлен!');
     }
 }
