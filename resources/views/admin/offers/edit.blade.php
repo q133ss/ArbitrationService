@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Изменить офер '.$offer->name)
+@section('title', 'Изменить оффер '.$offer->name)
 @section('meta')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
@@ -126,7 +126,7 @@
                 <form action="{{route('admin.offers.destroy', $offer->id)}}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <button id="confirm" class="btn btn-link text-danger mt-3 p-0">Удалить офер</button>
+                    <button id="confirm" class="btn btn-link text-danger mt-3 p-0">Удалить оффер</button>
                 </form>
             </div>
                 @if($offer->version)

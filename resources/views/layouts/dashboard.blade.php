@@ -122,7 +122,7 @@
         <!-- Page Sidebar Start-->
         <div class="sidebar-wrapper">
             <div>
-                <div class="logo-wrapper">
+                <div class="logo-wrapper" style="padding: 15px 30px; background: #7366ff">
                     <a href="index.html">
                         <img class="img-fluid for-light" width="50px" src="/assets/images/logo/logo-svg.svg" alt="">
                         <img class="img-fluid for-dark" width="50px" src="/assets/images/logo/logo-svg.svg" alt="">

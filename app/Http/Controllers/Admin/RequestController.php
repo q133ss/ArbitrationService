@@ -27,10 +27,10 @@ class RequestController extends Controller
                 $message = '';
                 switch ($action) {
                     case 'canceled':
-                        (new Notification)->send('Заявка на офер "' . $offer->offer->name . '" отклонена', $offer->user_id);
+                        (new Notification)->send('Заявка на оффер "' . $offer->offer->name . '" отклонена', $offer->user_id, $offer_id);
                         break;
                     case 'approved':
-                        (new Notification)->send('Заявка на офер "' . $offer->offer->name . '" одобрена!', $offer->user_id);
+                        (new Notification)->send('Заявка на оффер "' . $offer->offer->name . '" одобрена!', $offer->user_id, $offer_id);
                         break;
                 }
             }, 1);

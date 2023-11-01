@@ -164,7 +164,7 @@
                             <form class="row g-3" method="POST" action="{{route('operator.leads.store')}}">
                                 @csrf
                                 <div class="col-md-12">
-                                    <label class="form-label" for="inputEmail4">Офер*</label>
+                                    <label class="form-label" for="inputEmail4">Оффер*</label>
                                     <select name="offer_id" id="" class="form-control">
                                         @foreach(App\Models\Offer::orderBy('created_at', 'DESC')->get() as $offer)
                                             <option @if(old('offer_id') == $offer->id) selected @endif  value="{{$offer->id}}">{{$offer->name}}</option>

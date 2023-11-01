@@ -18,7 +18,7 @@
                 <form class="row g-3" method="POST" action="{{route('adv.leads.update', $lead->id)}}">
                     @csrf
                     <div class="col-md-12">
-                        <label class="form-label" for="inputEmail4">Офер:</label>
+                        <label class="form-label" for="inputEmail4">Оффер:</label>
                         <a href="{{route('adv.offers.show', $lead->offer->id)}}" target="_blank">{{$lead->offer->name}}</a>
                     </div>
                     <div class="col-md-12">

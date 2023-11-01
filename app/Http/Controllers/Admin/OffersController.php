@@ -59,7 +59,7 @@ class OffersController extends Controller
                 ]);
             }
         }
-        return to_route('admin.offers.index')->withSuccess('Офер успешно добавлен!');
+        return to_route('admin.offers.index')->withSuccess('Оффер успешно добавлен!');
     }
 
     /**
@@ -99,7 +99,7 @@ class OffersController extends Controller
                 ]);
             }
         }
-        return to_route('admin.offers.index')->withSuccess('Офер успешно обновлен!');
+        return to_route('admin.offers.index')->withSuccess('Оффер успешно обновлен!');
     }
 
     /**
@@ -108,7 +108,7 @@ class OffersController extends Controller
     public function destroy(string $id)
     {
         Offer::findOrFail($id)->delete();
-        return to_route('admin.offers.index')->withSuccess('Офер успешно удален!');
+        return to_route('admin.offers.index')->withSuccess('Оффер успешно удален!');
     }
 
     public function deleteFile(Request $request)
@@ -148,13 +148,15 @@ class OffersController extends Controller
                 }
             }
             Notification::create([
-                'title' => 'Изменения вашего офера '. $id .' одобрены!',
+                'title' => 'Изменения вашего оффера '. $id .' одобрены!',
+                'offer_id' => $id,
                 'user_id' => $data['advertiser_id']
             ]);
             return to_route('admin.offers.index')->withSuccess('Изменения одобрены!');
         }
         Notification::create([
-            'title' => 'Изменения вашего офера '. $id .' отклонены!',
+            'title' => 'Изменения вашего оффера '. $id .' отклонены!',
+            'offer_id' => $id,
             'user_id' => $request->advertiser_id
         ]);
 

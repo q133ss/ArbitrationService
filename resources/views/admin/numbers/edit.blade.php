@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <label class="form-label" for="selectOffer">Офер</label>
+                        <label class="form-label" for="selectOffer">Оффер</label>
                         <select class="form-select" name="offer_id" id="selectOffer">
                             @foreach($offers as $offer)
                                 <option @if($offer->id == $number->offer_id) selected @endif value="{{$offer->id}}">{{$offer->name}}</option>

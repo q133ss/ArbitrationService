@@ -18,7 +18,7 @@
                             <th scope="col">Телефон</th>
                             <th scope="col">Имя</th>
                             <th scope="col">Город</th>
-                            <th scope="col">Офер</th>
+                            <th scope="col">Оффер</th>
                             <th scope="col">Статус</th>
                         </tr>
                         </thead>
@@ -26,7 +26,7 @@
                         @foreach($leads as $lead)
                             <tr>
                                 <th scope="row">{{$lead->id}}</th>
-                                <td>{{$lead->phone}}</td>
+                                <td>{{mb_substr($lead->phone,0,10)}}**-**</td>
                                 <td>{{$lead->name}}</td>
                                 <td>{{$lead->city}}</td>
                                 <td><a href="{{route('master.offers.show', $lead->offer->id)}}" target="_blank">{{$lead->offer->name}}</a></td>

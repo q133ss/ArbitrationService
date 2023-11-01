@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Добавить офер')
+@section('title', 'Добавить оффер')
 @section('content')
     <div class="card">
         <div class="card-body">

@@ -60,7 +60,7 @@ class OffersController extends Controller
             }
         }
 
-        return back()->withSuccess('Офер отправлен на рассмотрение');
+        return back()->withSuccess('Оффер отправлен на рассмотрение');
 
     }
 

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Офер '.$offer->name)
+@section('title', 'Оффер '.$offer->name)
 @section('meta')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Мои оферы')
+@section('title', 'Мои офферы')
 @section('content')
     <div class="col-sm-12">
         <div class="card">
@@ -13,8 +13,8 @@
                     <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                         <div class="row">
                             @if($offers->isEmpty())
-                                Вы еще не оставляли заявки на оферы.
-                                <a href="{{route('master.offers.index')}}" class="btn-link p-0">Все оферы</a>
+                                Вы еще не оставляли заявки на офферы.
+                                <a href="{{route('master.offers.index')}}" class="btn-link p-0">Все офферы</a>
                             @endif
                             @foreach($offers as $offer)
                                 <div class="col-xxl-4 col-md-12">

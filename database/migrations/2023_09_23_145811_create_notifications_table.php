@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('user_id');
+            $table->foreignId('offer_id')->nullable();
             $table->boolean('is_read')->default(false);
             $table->timestamps();
         });

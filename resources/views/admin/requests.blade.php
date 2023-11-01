@@ -15,7 +15,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Пользователь</th>
-                        <th scope="col">Офер</th>
+                        <th scope="col">Оффер</th>
                         <th scope="col">Действие</th>
                     </tr>
                     </thead>

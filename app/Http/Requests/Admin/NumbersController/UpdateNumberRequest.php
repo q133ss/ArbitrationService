@@ -32,8 +32,8 @@ class UpdateNumberRequest extends FormRequest
         return [
             'user_id.exists' => 'Указанного пользователя не существует',
             'user_id.required' => 'Укажите пользователя',
-            'offer_id.exists' => 'Указанного офера не существует',
-            'offer_id.required' => 'Укажите офер'
+            'offer_id.exists' => 'Указанного оффера не существует',
+            'offer_id.required' => 'Укажите оффер'
         ];
     }
 }

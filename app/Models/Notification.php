@@ -10,11 +10,12 @@ class Notification extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function send(string $title, int $user_id): void
+    public function send(string $title, int $user_id, int $offer_id = null): void
     {
         $this->create([
             'title' => $title,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'offer_id' => $offer_id
         ]);
     }
 }

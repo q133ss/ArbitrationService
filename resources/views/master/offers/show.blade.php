@@ -34,9 +34,9 @@
         @if(Auth()->User()->offers->where('id', $offer->id)->isEmpty())
             <a href="{{route('master.offers.request', $offer->id)}}" class="btn btn-primary mt-3">Оставить заявку</a>
         @else
-            <strong class="mt-4">Вы оставили заявку на данный офер</strong>
+            <strong class="mt-4">Вы оставили заявку на данный оффер</strong>
             <br>
-            <a href="{{route('master.offers.my')}}" class="btn-link">Мои оферы</a>
+            <a href="{{route('master.offers.my')}}" class="btn-link">Мои офферы</a>
         @endif
     </div>
 </div>

@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
                 {
                     $offers = Auth()->user()->acceptedOffers;
                     if($offers->where('id', $value)->isEmpty()){
-                        $fail('Указан не верный офер');
+                        $fail('Указан не верный оффер');
                     }
                 }
             ],
@@ -43,8 +43,8 @@ class StoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'offer_id.required' => 'Укажите офер',
-            'offer_id.integer' => 'Указан не верный офер',
+            'offer_id.required' => 'Укажите оффер',
+            'offer_id.integer' => 'Указан не верный оффер',
 
             'phone.required' => 'Укажите телефон',
             'phone.string' => 'Не верный формат телефона',

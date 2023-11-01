@@ -36,7 +36,7 @@ class OffersController extends Controller
         // Notifications
         $admins = User::where('role_id', Role::where('tech_name', 'admin')->pluck('id')->first())->pluck('id')->all();
         foreach ($admins as $admin_id){
-            (new Notification())->send('Пользователь #'.Auth()->id().' оставил заявку на офер', $admin_id);
+            (new Notification())->send('Пользователь #'.Auth()->id().' оставил заявку на оффер', $admin_id , $offer->id);
         }
 
         return to_route('master.offers.index')->withSuccess('Заявка успешно создана');

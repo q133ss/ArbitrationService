@@ -17,7 +17,7 @@
                             <th scope="col">Телефон</th>
                             <th scope="col">Имя</th>
                             <th scope="col">Город</th>
-                            <th scope="col">Офер</th>
+                            <th scope="col">Оффер</th>
                             <th scope="col">Статус</th>
                         </tr>
                         </thead>

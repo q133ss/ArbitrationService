@@ -14,25 +14,23 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($withdraws as $withdraw)
                         <tr>
-                            <td>23.09.2023</td>
+                            <td>{{$withdraw->created_at->format('d-m-Y H:i')}}</td>
                             <td>
-                                10.000₽
+                                {{$withdraw->sum}}₽
                             </td>
                             <td>
-                                <span class="text-info">В процессе</span>
+                                @if($withdraw->status == 'wait')
+                                    <span class="text-info">В процессе</span>
+                                @elseif($withdraw->status == 'done')
+                                    <span class="text-success">Завершена</span>
+                                @elseif($withdraw->status == 'cancel')
+                                    <span class="text-danger">Отклонена</span>
+                                @endif
                             </td>
                         </tr>
-
-                        <tr>
-                            <td>23.09.2023</td>
-                            <td>
-                                12.000₽
-                            </td>
-                            <td>
-                                <span class="text-success">Выполнен</span>
-                            </td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
