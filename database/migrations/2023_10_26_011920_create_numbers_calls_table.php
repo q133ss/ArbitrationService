@@ -16,6 +16,15 @@ return new class extends Migration
             $table->foreignId('number_id')->comment('На какой номер звонок');
             $table->string('number_from')->comment('От кого звонок');
             $table->integer('duration')->nullable();
+
+            $table->string('name')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->text('comment')->nullable();
+            $table->date('date')->nullable()->comment('На какую дату договорились');
+            $table->time('time')->nullable()->comment('На какую дату договорились');
+
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

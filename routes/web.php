@@ -90,7 +90,11 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     });
 
     Route::name('operator.')->prefix('operator')->middleware('is.operator')->group(function(){
-        Route::post('/', [App\Http\Controllers\Operator\IndexController::class, 'store'])->name('leads.store');
+        Route::post('/call/approve/{id}', [App\Http\Controllers\Operator\IndexController::class, 'approve'])->name('call.approve');
+        Route::get('/call/cancel/{id}', [App\Http\Controllers\Operator\IndexController::class, 'cancel'])->name('call.cancel');
+
+        Route::get('/call/{id}', [App\Http\Controllers\Operator\IndexController::class, 'callShow'])->name('call.show');
+        Route::get('/offer/{id}', [App\Http\Controllers\Operator\IndexController::class, 'offerShow'])->name('offer.show');
     });
 });
 
