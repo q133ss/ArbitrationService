@@ -16,6 +16,13 @@
                             <th scope="col">#</th>
                             <th scope="col">Телефон</th>
                             <th scope="col">Длительность звонка</th>
+
+                            <th scope="col">Имя клиента</th>
+                            <th scope="col">Город клиента</th>
+                            <th scope="col">Адрес</th>
+                            <th scope="col">Дата и время встречи</th>
+                            <th scope="col">Комментарий оператора</th>
+
                             <th scope="col">Действие</th>
                         </tr>
                         </thead>
@@ -25,6 +32,11 @@
                                 <th scope="row">{{$call->id}}</th>
                                 <td>{{$call->number_from}}</td>
                                 <td>{{$call->duration}}</td>
+                                <td>{{$call->name}}</td>
+                                <td>{{$call->city}}</td>
+                                <td>{{$call->address}}</td>
+                                <td>{{\Carbon\Carbon::parse($call->date)->format('d-m-Y')}} в {{\Carbon\Carbon::parse($call->time)->format('H:i')}}</td>
+                                <td>{{$call->comment}}</td>
                                 <td>
                                     <a href="{{route('adv.calls.action', [$call->id, 1])}}" class="btn conf btn-primary">Подтвердить заявку</a>
                                     <a href="{{route('adv.calls.action', [$call->id, 0])}}" class="btn conf btn-primary">Отклонить заявку</a>

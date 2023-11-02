@@ -20,6 +20,7 @@ class CallsController extends Controller
         $calls = DB::table('numbers_calls')
             ->select('*')
             ->whereIn('number_id', $numbers)
+            ->where('approved', 1)
             ->orderBy('id', 'DESC')
             ->get();
         return view('advertiser.calls', compact('calls'));
@@ -31,8 +32,9 @@ class CallsController extends Controller
         $call = DB::table('numbers_calls')
             ->leftJoin('numbers', 'numbers.id', 'numbers_calls.number_id')
             ->leftJoin('offers', 'offers.id', 'numbers.offer_id')
+            ->leftJoin('users', 'users.id', 'numbers.user_id')
             ->where('numbers_calls.id',$call_id)
-            ->select('numbers_calls.id','offers.price', 'offers.advertiser_id', 'numbers_calls.number_from', 'numbers.offer_id')->first();
+            ->select('numbers_calls.*','offers.price', 'users.id as master_id', 'offers.advertiser_id', 'numbers.offer_id')->first();
         if($call == null){
             abort(404);
         }
@@ -53,21 +55,43 @@ class CallsController extends Controller
             try {
                 DB::transaction(function () use ($call, $status) {
                     $lead = Lead::where('phone', $call->number_from)
-                        ->where('offer_id', $call->offer_id)
-                        ->firstOrFail();
-                    $lead->update(['status' => $status]);
-                    DB::table('numbers_calls')->where('id', $call->id)->delete();
+                        ->where('offer_id', $call->offer_id);
 
-                    if($status == 'accept') {
+                    $leadId = null;
+
+                    if($lead->exists()) {
+                        $lead->update(['status' => $status]);
+                        $leadId = $lead->first()->id;
+                    }else{
+                        $newLead = DB::table('leads')->insertGetId([
+                            'phone' => $call->number_from,
+                            'name' => $call->name,
+                            'city' => $call->city,
+                            'status' => $status,
+                            'address' => $call->address,
+                            'comment' => $call->comment,
+                            'date' => $call->date,
+                            'time' => $call->time,
+                            'offer_id' => $call->offer_id,
+                            'master_id' => $call->master_id
+                        ]);
+                        $leadId = $newLead;
+
+                    }
+
+                    if ($status == 'accept') {
                         $balance = Auth()->user()->balance;
                         Auth()->user()->update(['balance' => $balance -= $call->price]);
                         UserOperation::create([
-                            'lead_id' => $lead->id,
+                            'lead_id' => $leadId,
                             'user_id' => Auth()->id(),
                             'sum' => -$call->price,
                             'description' => 'Списание за заявку'
                         ]);
                     }
+
+                    DB::table('numbers_calls')->where('id', $call->id)->delete();
+
                 }, 3);
             } catch (\Exception $exception){
                 return 'Произошла ошибка, попробуйте еще раз';
