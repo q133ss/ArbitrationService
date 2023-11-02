@@ -191,6 +191,27 @@
                                     <label class="form-label" for="inputEmail4">Город</label>
                                     <input class="form-control" value="{{old('city')}}" name="city" id="inputEmail4" type="text" placeholder="Город">
                                 </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label" for="inputEmail5">Адрес</label>
+                                    <input class="form-control" value="{{old('address')}}" name="address" id="inputEmail5" type="text" placeholder="Адрес">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label" for="inputEmail2">Комментарий</label>
+                                    <textarea name="comment" class="form-control" id="inputEmail2" cols="30" rows="10">{{old('comment')}}</textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="col-form-label" for="cleave-date1">Дата на которую договорились</label>
+                                    <input class="form-control" name="date" id="cleave-date1" type="text" placeholder="ДД-ММ-ГГГГ" value="{{\Carbon\Carbon::parse(old('date'))->format('d-m-Y')}}">
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="col-form-label" for="cleave-time2">Время на которое договорились</label>
+                                    <input class="form-control" name="time" id="cleave-time2" type="text" placeholder="ЧЧ:ММ" value="{{old('time')}}">
+                                </div>
+
                                 <div class="col-12">
                                     <button class="btn btn-primary" type="submit">Добавить</button>
                                 </div>
@@ -246,6 +267,19 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="/assets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+<script>
+    new Cleave('#cleave-date1', {
+        date: true,
+        delimiter: '-',
+        datePattern: ['d', 'm', 'Y']
+    });
+
+    new Cleave('#cleave-time2', {
+        time: true,
+        timePattern: ['h', 'm']
+    });
+</script>
 <script>
     $('#clearNotificationsBtn').click(function(){
         $.ajax({

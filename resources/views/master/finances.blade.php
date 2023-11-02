@@ -20,7 +20,7 @@
     <button class="btn btn-primary" onclick="openForm()">Добавить карту</button>
     <button class="btn btn-info" onclick="openWithout()">Запросить вывод средств</button>
 
-    <div id="chart" class="mt-4"></div>
+{{--    <div id="chart" class="mt-4"></div>--}}
 
     <div id="addCard" class="w-100 h-100 p-2 bg-white">
         <button type="button" class="add_card_close btn">X</button>

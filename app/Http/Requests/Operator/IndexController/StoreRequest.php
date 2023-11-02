@@ -30,7 +30,12 @@ class StoreRequest extends FormRequest
             'master_id' => 'required|integer|exists:users,id',
             'phone' => 'required|string',
             'name' => 'nullable|string',
-            'city' => 'nullable|string'
+            'city' => 'nullable|string',
+
+            'date' => 'nullable|date_format:d-m-Y',
+            'time' => 'nullable|date_format:H:i',
+            'address' => 'nullable|string',
+            'comment' => 'nullable|string'
         ];
     }
 
@@ -49,7 +54,12 @@ class StoreRequest extends FormRequest
             'phone.string' => 'Не верный формат телефона',
 
             'name.string' => 'Не верно указанно имя',
-            'city.string' => 'Не верно указан город'
+            'city.string' => 'Не верно указан город',
+
+            'date.date_format' => 'Неверный формат даты',
+            'time.date_format' => 'Неверный формат времени',
+            'address.string' => 'Адрес должен быть строкой',
+            'comment.string' => 'Комментарий должен быть строкой'
         ];
     }
 }

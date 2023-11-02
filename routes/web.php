@@ -71,6 +71,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::post('/leads/new', [App\Http\Controllers\Master\LeadsController::class, 'store'])->name('leads.store');
 
         Route::get('/numbers', [App\Http\Controllers\Master\NumbersController::class, 'index'])->name('numbers.index');
+
+        Route::get('/statistics', [App\Http\Controllers\Master\StatisticController::class, 'index'])->name('statistics.index');
     });
 
     Route::name('adv.')->prefix('advertiser')->middleware('is.adv')->group(function (){
