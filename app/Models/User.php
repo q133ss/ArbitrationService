@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -87,5 +88,45 @@ class User extends Authenticatable
     public function numbers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Number::class, 'user_id', 'id');
+    }
+
+    /**
+     * Создает/меняет аватар у юзера
+     *
+     * Передавать надо полный пусть со /storage/
+     *
+     * @param string $path
+     * @return void
+     */
+    public function updateImage(string $path): void
+    {
+        $file = File::where('fileable_type', 'App\Models\User')->where('fileable_id', $this->id)->where('category', 'photo');
+        if($file->exists()){
+            //удаляем старый ставим новый!
+            Storage::disk('public')->delete(str_replace('/storage/', '', $file->pluck('src')->first()));
+            $file->first()->update(['src' => $path]);
+        }else{
+            File::create([
+                'fileable_type' => 'App\Models\User',
+                'fileable_id' => $this->id,
+                'category' => 'photo',
+                'src' => $path
+            ]);
+        }
+    }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
+
+    public function getAvatar()
+    {
+        $file = $this->files->where('category', 'photo');
+        if(!$file->isEmpty()){
+            return $file->pluck('src')->first();
+        }else{
+            return '/assets/images/dashboard/profile.jpg';
+        }
     }
 }

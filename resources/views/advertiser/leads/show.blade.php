@@ -34,6 +34,26 @@
                     </div>
 
                     <div class="col-md-12">
+                        <label class="form-label" for="inputEmail5">Адрес</label>
+                        <input class="form-control" value="{{$lead->address}}" name="address" id="inputEmail5" type="text" placeholder="Адрес">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="inputEmail2">Комментарий</label>
+                        <textarea name="comment" class="form-control" id="inputEmail2" cols="30" rows="10">{{$lead->comment}}</textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="col-form-label" for="cleave-date1">Дата на которую договорились</label>
+                        <input class="form-control" name="date" id="cleave-date1" type="text" placeholder="ДД-ММ-ГГГГ" value="{{\Carbon\Carbon::parse($lead->date)->format('d-m-Y')}}">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="col-form-label" for="cleave-time2">Время на которое договорились</label>
+                        <input class="form-control" name="time" id="cleave-time2" type="text" placeholder="ЧЧ:ММ" value="{{$lead->time}}">
+                    </div>
+
+                    <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Статус</label>
                         @php
                         $statuses = ['hold' => 'Не обработан','accept' => 'Принят','cancel' => 'Отклонен'];
@@ -51,4 +71,19 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    <script>
+        new Cleave('#cleave-date1', {
+            date: true,
+            delimiter: '-',
+            datePattern: ['d', 'm', 'Y']
+        });
+
+        new Cleave('#cleave-time2', {
+            time: true,
+            timePattern: ['h', 'm']
+        });
+    </script>
 @endsection

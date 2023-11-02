@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('city')->nullable();
             $table->enum('status', ['hold', 'cancel', 'accept'])->default('hold');
+            $table->string('address')->nullable();
+            $table->text('comment')->nullable();
+            $table->date('date')->nullable()->comment('На какую дату договорились');
+            $table->time('time')->nullable()->comment('На какую дату договорились');
             $table->foreignId('offer_id');
             $table->foreignId('master_id');
             $table->boolean('from_form')->default(false)->comment('Добавленно из формы');

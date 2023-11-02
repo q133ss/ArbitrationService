@@ -28,6 +28,11 @@ Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logou
 
 Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
+Route::middleware('auth')->group(function(){
+    Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+    Route::post('/settings/{id}', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update');
+});
+
 Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::post('/clear/notifications', [App\Http\Controllers\NotificationController::class, 'clear'])->name('clear.notifications');
 

@@ -24,7 +24,12 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'city' => 'string|max:255',
-            'status' => 'in:hold,accept,cancel'
+            'status' => 'in:hold,accept,cancel',
+
+            'date' => 'nullable|date_format:d-m-Y',
+            'time' => 'nullable|date_format:H:i',
+            'address' => 'nullable|string',
+            'comment' => 'nullable|string'
         ];
     }
 
@@ -37,7 +42,12 @@ class UpdateRequest extends FormRequest
             'city.string' => 'Город должен быть строкой',
             'city.max' => 'Город не должен быть больше 255 символов',
 
-            'status.in' => 'Указан не верный статус'
+            'status.in' => 'Указан не верный статус',
+
+            'date.date_format' => 'Неверный формат даты',
+            'time.date_format' => 'Неверный формат времени',
+            'address.string' => 'Адрес должен быть строкой',
+            'comment.string' => 'Комментарий должен быть строкой'
         ];
     }
 }

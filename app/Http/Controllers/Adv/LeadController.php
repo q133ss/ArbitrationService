@@ -7,6 +7,7 @@ use App\Http\Requests\Adv\OfferController\UpdateRequest;
 use App\Models\Lead;
 use App\Models\Offer;
 use App\Models\UserOperation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -49,7 +50,9 @@ class LeadController extends Controller
             }
         }
 
-        $lead->update($request->validated());
+        $data = $request->validated();
+        $data['date'] = Carbon::parse($request->date)->format('Y-m-d');
+        $lead->update($data);
         return to_route('adv.leads.index')->withSuccess('Лид успешно обновлен!');
     }
 }
