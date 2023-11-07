@@ -26,6 +26,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|min:8',
+            'role_id' => 'required|integer|exists:roles,id|in:2,3',
             're-password' => [
                 'required',
                 function(string $attribute, mixed $value, Closure $fail){
@@ -49,6 +50,11 @@ class RegisterRequest extends FormRequest
             'password.required' => 'Введите пароль',
             'password.string' => 'Пароль должен быть строкой',
             'password.min' => 'Пароль должен состоять как минимум из 8 символов',
+
+            'role_id.required' => 'Выберите роль',
+            'role_id.integer' => 'Не верно указана роль',
+            'role_id.exists' => 'Не верно указана роль',
+            'role_id.in' => 'Не верно указана роль',
 
             're-password.required' => 'Повторите пароль'
         ];
