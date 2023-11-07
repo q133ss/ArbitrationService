@@ -30,6 +30,13 @@ class GetCalls extends Command
      */
     public function handle()
     {
+        $numbers = (new TelphinService())->getNumbers();
+        $newNumbers = [];
+        foreach ($numbers as $number){
+            $newNumbers[] = ['number' => $number->name];
+        }
+        DB::table('numbers')->insertOrIgnore($newNumbers);
+
         $numbers = Number::get();
         foreach ($numbers as $number) {
             $params = [

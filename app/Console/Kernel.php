@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         //Получение новых заявок
-        $schedule->command('calls:get')->hourly();
+        $schedule->command('calls:get')->everyMinute();
     }
 
     /**
