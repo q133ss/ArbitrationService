@@ -48,7 +48,7 @@ class CallsController extends Controller
             if($status == 0){
                 $status = 'cancel';
             }elseif($status == 1){
-                $status = 'accept';
+                $status = 'hold';
             }
 
             //call delete + make lead
@@ -78,17 +78,17 @@ class CallsController extends Controller
                         $leadId = $newLead;
 
                     }
-
-                    if ($status == 'accept') {
-                        $balance = Auth()->user()->balance;
-                        Auth()->user()->update(['balance' => $balance -= $call->price]);
-                        UserOperation::create([
-                            'lead_id' => $leadId,
-                            'user_id' => Auth()->id(),
-                            'sum' => -$call->price,
-                            'description' => 'Списание за заявку'
-                        ]);
-                    }
+#TODO кажеться тут не нужно менять баланс
+//                    if ($status == 'accept') {
+//                        $balance = Auth()->user()->balance;
+//                        Auth()->user()->update(['balance' => $balance -= $call->price]);
+//                        UserOperation::create([
+//                            'lead_id' => $leadId,
+//                            'user_id' => Auth()->id(),
+//                            'sum' => -$call->price,
+//                            'description' => 'Списание за заявку'
+//                        ]);
+//                    }
 
                     DB::table('numbers_calls')->where('id', $call->id)->delete();
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('role_id');
             $table->double('balance')->default(0);
             $table->boolean('confirmed')->default(false);
+            $table->double('hold')->default(0)->comment('Баланс холда для вебмастера');
         });
     }
 

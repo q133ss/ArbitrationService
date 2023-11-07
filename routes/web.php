@@ -77,10 +77,12 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     Route::name('adv.')->prefix('advertiser')->middleware('is.adv')->group(function (){
         Route::get('/offers', [App\Http\Controllers\Adv\OffersController::class, 'index'])->name('offers');
-        Route::get('/offers/{id}', [App\Http\Controllers\Adv\OffersController::class, 'show'])->name('offers.show');
-        Route::post('/offers/{id}', [App\Http\Controllers\Adv\OffersController::class, 'update'])->name('offers.update');
+        Route::get('/offers/show/{id}', [App\Http\Controllers\Adv\OffersController::class, 'show'])->name('offers.show');
+        Route::post('/offers/update/{id}', [App\Http\Controllers\Adv\OffersController::class, 'update'])->name('offers.update');
         Route::post('/offers/{id}/add-file', [App\Http\Controllers\Adv\OffersController::class, 'addFile'])->name('offers.add.file');
         Route::post('/offers/remove-file', [App\Http\Controllers\Adv\OffersController::class, 'removeFile'])->name('offers.remove.file');
+        Route::get('/offers/create', [App\Http\Controllers\Adv\OffersController::class, 'create'])->name('offers.create');
+        Route::post('/offers/store', [App\Http\Controllers\Adv\OffersController::class, 'store'])->name('offers.store');
         Route::get('/leads', [App\Http\Controllers\Adv\LeadController::class, 'index'])->name('leads.index');
         Route::get('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'show'])->name('lead.show');
         Route::post('/lead/{id}', [App\Http\Controllers\Adv\LeadController::class, 'update'])->name('leads.update');

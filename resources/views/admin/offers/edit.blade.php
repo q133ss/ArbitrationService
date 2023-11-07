@@ -10,6 +10,10 @@
                 <div class="text-danger mb-3">{{$errors->first()}}</div>
             @endif
 
+            @if($offer->approved_to_show == 0)
+                <span class="text-info mb-2">Данный оффер был предложен рекламодателем, но еще не подтвержден</span>
+            @endif
+
             @if($offer->approved == false)
                 <h3>Прошлая версия</h3>
             @endif
@@ -117,6 +121,16 @@
                             </div>
                         @endforeach
                     </div>
+
+                    @if($offer->approved_to_show == 0)
+                        <div class="col-md-12">
+                            <label class="form-label" for="advertiser_id">Статус</label>
+                            <select class="form-select" name="approved_to_show" id="advertiser_id">
+                                <option value="0">Не подтвержден</option>
+                                <option value="1">Подтвержден</option>
+                            </select>
+                        </div>
+                    @endif
 
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Обновить</button>

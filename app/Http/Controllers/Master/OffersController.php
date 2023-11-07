@@ -14,7 +14,7 @@ class OffersController extends Controller
 {
     public function index()
     {
-        $offers = Offer::orderBy('created_at', 'DESC')->get();
+        $offers = Offer::where('approved_to_show', 1)->orderBy('created_at', 'DESC')->get();
         return view('master.offers.index', compact('offers'));
     }
 

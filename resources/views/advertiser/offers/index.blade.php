@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', 'Офферы')
 @section('content')
+    <a href="{{route('adv.offers.create')}}" class="btn btn-primary mb-2">Предложить оффер</a>
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">

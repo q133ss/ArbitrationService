@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Admin\OffersController;
+namespace App\Http\Requests\Adv\OffersController;
 
-use App\Models\User;
-use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -29,20 +27,8 @@ class StoreRequest extends FormRequest
             'description' => 'required|string',
             'target' => 'required|string|max:255',
             'price' => 'required|integer',
-            'advertiser_id' => [
-                'required',
-                'integer',
-                'exists:users,id',
-                function(string $attribute, mixed $value, Closure $fail): void
-                {
-                    if(User::find($value)->role->tech_name != 'advertiser'){
-                        $fail('Данный пользователь не является рекламодателем');
-                    }
-                }
-            ],
             'hold' => 'required|string',
-            'vector' => 'required|string',
-            'approved_to_show' => 'integer|in:0,1'
+            'vector' => 'required|string'
         ];
     }
 
@@ -65,18 +51,11 @@ class StoreRequest extends FormRequest
             'price.required' => 'Введите вознаграждение',
             'price.integer' => 'Вознаграждение должно быть числом',
 
-            'advertiser_id.required' => 'Укажите рекламодателя',
-            'advertiser_id.integer' => 'Поле рекламодатель должно быть числом',
-            'advertiser_id.exists' => 'Указанного рекламодателя не существует',
-
             'hold.required' => 'Введите холд',
             'hold.string' => 'Холд должен быть строкой',
 
             'vector.required' => 'Введите направление',
-            'vector.string' => 'Направление должно быть строкой',
-
-            'approved_to_show.integer' => 'Не верно указан статус',
-            'approved_to_show.in' => 'Не верно указан статус'
+            'vector.string' => 'Направление должно быть строкой'
         ];
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->double('price')->comment('Цена за лид');
             $table->foreignId('advertiser_id')->comment('Рекламодатель');
             $table->boolean('approved')->default(true);
+            $table->boolean('approved_to_show')->default(true);
             $table->timestamps();
         });
     }

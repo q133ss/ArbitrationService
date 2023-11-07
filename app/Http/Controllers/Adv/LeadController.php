@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Adv\OfferController\UpdateRequest;
 use App\Models\Lead;
 use App\Models\Offer;
+use App\Models\User;
 use App\Models\UserOperation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class LeadController extends Controller
     {
         $lead = Lead::findOrFail($id);
 
-        if($request->status != 'hold'){
+        if($request->status != 'hold' && $lead->status != 'accept'){
             //delete!
             DB::table('numbers_calls')->where('number_from', $lead->phone)->delete();
 
@@ -47,7 +48,14 @@ class LeadController extends Controller
                     'sum' => -$lead->offer->price,
                     'description' => 'Списание за заявку'
                 ]);
+
+                $master = User::find($lead->master_id);
+                $newHold = $master->hold -= Offer::find($lead->offer_id)->price;
+                $newBalance = $master->balance += Offer::find($lead->offer_id)->price;
+                $master->update(['hold' => $newHold, 'balance' => $newBalance]);
             }
+            //переводим из холда в баланс
+            // или удаляем из холда
         }
 
         $data = $request->validated();

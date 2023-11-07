@@ -84,6 +84,11 @@
                     <li id="userBalance">
                         {{Auth()->user()->balance}} ₽
                     </li>
+                    @if(Auth()->user()->role->tech_name == 'webmaster')
+                    <li id="userBalance">
+                        Холд: {{Auth()->user()->hold}} ₽
+                    </li>
+                    @endif
                     <li class="onhover-dropdown">
                         <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary" id="notification_count">{{Auth()->User()->notifications()->count()}}</span></div>
                         @include('inc.notifications')

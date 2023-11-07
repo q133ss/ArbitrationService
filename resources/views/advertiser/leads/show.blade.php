@@ -55,6 +55,7 @@
 
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Статус</label>
+                        @if($lead->status != 'accept')
                         @php
                         $statuses = ['hold' => 'Не обработан','accept' => 'Принят','cancel' => 'Отклонен'];
                         @endphp
@@ -63,6 +64,10 @@
                                 <option value="{{$status}}" @if($lead->status == $status) checked @endif>{{$name}}</option>
                             @endforeach
                         </select>
+                        @else
+                            <br>
+                            <span class="text-success">Подтвержден</span>
+                        @endif
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Обновить</button>

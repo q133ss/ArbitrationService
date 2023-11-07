@@ -93,4 +93,33 @@ class OffersController extends Controller
 
         return true;
     }
+
+    public function create()
+    {
+        return view('advertiser.offers.create');
+    }
+
+    public function store(\App\Http\Requests\Adv\OffersController\StoreRequest $request)
+    {
+        $data = $request->validated();
+        $data['for_partner'] = json_encode($request->for_partner);
+        $data['for_client'] = json_encode($request->for_client);
+        $data['distinctive'] = json_encode($request->distinctive);
+        $data['advertiser_id'] = Auth()->id();
+        $data['approved_to_show'] = 0;
+
+        $offer = Offer::create($data);
+
+        if($request->file('files') != null) {
+            foreach ($request->file('files') as $file) {
+                File::create([
+                    'category' => 'materials',
+                    'src' => '/storage/'.$file->store('offers', 'public'),
+                    'fileable_type' => 'App\Models\Offer',
+                    'fileable_id' => $offer->id
+                ]);
+            }
+        }
+        return to_route('adv.offers')->withSuccess('Оффер успешно предложен!');
+    }
 }
