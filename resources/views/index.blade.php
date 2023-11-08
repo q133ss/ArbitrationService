@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="/landing/css/tiny-slider.css"/>
     <!-- Main Css -->
     <link href="/landing/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-    <link href="/landing/css/colors/default.css" rel="stylesheet" id="color-opt">
+{{--    <link href="/landing/css/colors/default.css" rel="stylesheet" id="color-opt">--}}
+    <link href="/landing/css/colors/yellow.css" rel="stylesheet" id="color-opt">
 
 </head>
 
@@ -41,15 +42,16 @@
 <!-- Loader -->
 
 <!-- Navbar STart -->
+<a href="" id="index"></a>
 <header id="topnav" class="defaultscroll sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo" href="index.html">
+        <a class="logo" href="/">
                     <span class="logo-light-mode">
-                        <img src="/landing/logo.jpg" class="l-dark" height="24" alt="">
-                        <img src="/landing/logo.jpg" class="l-light" height="24" alt="">
+                        <img src="/assets/images/logo/logo-svg.svg" class="l-dark" height="24" alt="">
+                        <img src="/assets/images/logo/logo-svg.svg" class="l-light" height="24" alt="">
                     </span>
-            <img src="/landing/logo.jpg" height="24" class="logo-dark-mode" alt="">
+            <img src="/assets/images/logo/logo-svg.svg" height="24" class="logo-dark-mode" alt="">
         </a>
 
         <div class="menu-extras">
@@ -94,9 +96,9 @@
             <ul class="navigation-menu nav-light">
                 <li><a href="#index" class="sub-menu-item">Главная</a></li>
                 <li><a href="#about" class="sub-menu-item">О нас</a></li>
-                <li><a href="#index" class="sub-menu-item">Преимущества</a></li>
-                <li><a href="#index" class="sub-menu-item">Офферы</a></li>
-                <li><a href="#index" class="sub-menu-item">Контакты</a></li>
+                <li><a href="#advantages" class="sub-menu-item">Преимущества</a></li>
+                <li><a href="#offers" class="sub-menu-item">Офферы</a></li>
+                <li><a href="#contacts" class="sub-menu-item">Контакты</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->
@@ -104,13 +106,14 @@
 <!-- Navbar End -->
 
 <!-- Hero Start -->
-<section class="bg-half-170 d-table w-100 it-home" style="background: url('/landing/images/it/bg1.jpg') center center;">
+{{--<section class="bg-half-170 d-table w-100 it-home" style="background: url('/landing/images/it/bg1.jpg') center center;">--}}
+<section class="bg-half-170 d-table w-100 it-home" style="background: url('/landing/bg.jpg') center center;">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-6 col-12">
                 <div class="title-heading">
-                    <h6 class="text-white-50">IT Software & Design</h6>
+                    <h6 class="text-white-50">UP Upgrade</h6>
                     <h1 class="fw-bold text-white title-dark mt-2 mb-3">Партнёрская СРА-сеть номер 1 в сфере услуг</h1>
 
                     <div class="row text-white">
@@ -135,10 +138,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-4 pt-2">
-                        <a href="javascript:void(0)" class="btn btn-primary m-1"><i class="uil uil-phone"></i> Свяжитесь с нами</a>
-
-                    </div>
+{{--                    <div class="mt-4 pt-2">--}}
+{{--                        <a href="javascript:void(0)" class="btn btn-primary m-1"><i class="uil uil-phone"></i> Свяжитесь с нами</a>--}}
+{{--                    </div>--}}
                 </div>
             </div><!--end col-->
 
@@ -249,7 +251,7 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="title">Выгодные офферы</h4>
-                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>
+{{--                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>--}}
                     </div>
                 </div>
             </div><!--end col-->
@@ -261,7 +263,7 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="title">Регулярно обновляем направления</h4>
-                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>
+{{--                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>--}}
                     </div>
                 </div>
             </div><!--end col-->
@@ -273,7 +275,7 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="title">Безлимитные выплаты</h4>
-                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>
+{{--                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>--}}
                     </div>
                 </div>
             </div><!--end col-->
@@ -285,7 +287,7 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="title">Выплата по СРА</h4>
-                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>
+{{--                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which.</p>--}}
                     </div>
                 </div>
             </div><!--end col-->
@@ -303,7 +305,7 @@
                     <div class="col-lg-6 col-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
                         <div class="card work-container work-modern overflow-hidden rounded border-0 shadow-md">
                             <div class="card-body p-0">
-                                <img src="/landing/images/course/online/ab01.jpg" class="img-fluid" alt="work-image">
+                                <img src="/landing/rec.jpg" class="img-fluid" alt="work-image">
                                 <div class="overlay-work bg-dark"></div>
                                 <div class="content">
                                     <a href="javascript:void(0)" class="title text-white d-block fw-bold">Прямой рекламодатель</a>
@@ -318,7 +320,7 @@
                             <div class="col-lg-12 col-md-12 mt-4 mt-lg-0 pt-2 pt-lg-0">
                                 <div class="card work-container work-modern overflow-hidden rounded border-0 shadow-md">
                                     <div class="card-body p-0">
-                                        <img src="/landing/images/course/online/ab02.jpg" class="img-fluid" alt="work-image">
+                                        <img src="/landing/hold.jpg" class="img-fluid" alt="work-image">
                                         <div class="overlay-work bg-dark"></div>
                                         <div class="content">
                                             <a href="javascript:void(0)" class="title text-white d-block fw-bold">Холд всего 24 часа</a>
@@ -331,7 +333,7 @@
                             <div class="col-lg-12 col-md-12 mt-4 pt-2">
                                 <div class="card work-container work-modern overflow-hidden rounded border-0 shadow-md">
                                     <div class="card-body p-0">
-                                        <img src="/landing/images/course/online/ab03.jpg" class="img-fluid" alt="work-image">
+                                        <img src="/landing/auto.jpg" class="img-fluid" alt="work-image">
                                         <div class="overlay-work bg-dark"></div>
                                         <div class="content">
                                             <a href="javascript:void(0)" class="title text-white d-block fw-bold">Полная автоматизация</a>
@@ -346,6 +348,7 @@
             </div><!--end col-->
 
             <div class="col-lg-6 col-md-6 mt-4 mt-lg-0 pt- pt-lg-0">
+                <a href="" id="about"></a>
                 <div class="ms-lg-4">
                     <div class="section-title">
                         <h4 class="title mb-4 mt-3">Наши преимущества</h4>
@@ -478,14 +481,14 @@
     </div><!--end container-->
 </section><!--end section-->
 <!-- End -->
-
+<a href="" id="advantages"></a>
 <!-- Start -->
 <section class="section pt-0">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="video-solution-cta position-relative" style="z-index: 1;">
-                    <div class="position-relative py-5 rounded" style="background: url('/landing/images/it/cta.jpg') top;">
+                    <div class="position-relative py-5 rounded" style="">
                         <div class="bg-overlay rounded bg-primary bg-gradient" style="opacity: 0.8;"></div>
 
                         <div class="row">
@@ -528,6 +531,7 @@
 
 <!-- Start -->
 <section class="section">
+    <a href="" id="offers"></a>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
@@ -551,10 +555,10 @@
                             <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
-                    <div class="author">
-                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                    </div>
+{{--                    <div class="author">--}}
+{{--                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>--}}
+{{--                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>--}}
+{{--                    </div>--}}
                 </div>
             </div><!--end col-->
 
@@ -571,10 +575,10 @@
                             <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
-                    <div class="author">
-                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                    </div>
+{{--                    <div class="author">--}}
+{{--                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>--}}
+{{--                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>--}}
+{{--                    </div>--}}
                 </div>
             </div><!--end col-->
 
@@ -590,10 +594,10 @@
                             <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
-                    <div class="author">
-                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                    </div>
+{{--                    <div class="author">--}}
+{{--                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>--}}
+{{--                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>--}}
+{{--                    </div>--}}
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -602,6 +606,7 @@
 
 
 <section class="section">
+    <a href="" id="contacts"></a>
     <div class="container">
         <div class="row justify-content-center">
             <h3>Присоединяйся к нам</h3>
@@ -625,110 +630,110 @@
 <!-- End -->
 
 <!-- Footer Start -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-py-60">
-                    <div class="row">
-                        <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                            <a href="#" class="logo-footer">
-                                <img src="/landing/logo.jpg" height="24" alt="">
-                            </a>
-                            <!-- <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                            <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                            </ul> -->
-                            <!--end icon-->
-                        </div><!--end col-->
+{{--<footer class="footer">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-12">--}}
+{{--                <div class="footer-py-60">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">--}}
+{{--                            <a href="#" class="logo-footer">--}}
+{{--                                <img src="/assets/images/logo/logo-svg.svg" height="24" alt="">--}}
+{{--                            </a>--}}
+{{--                            <!-- <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>--}}
+{{--                            <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">--}}
+{{--                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>--}}
+{{--                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>--}}
+{{--                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>--}}
+{{--                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>--}}
+{{--                            </ul> -->--}}
+{{--                            <!--end icon-->--}}
+{{--                        </div><!--end col-->--}}
 
-                        <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                            <!-- <h5 class="footer-head">Company</h5>
-                            <ul class="list-unstyled footer-list mt-4">
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Team</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Pricing</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Project</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Careers</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
-                            </ul> -->
-                        </div><!--end col-->
+{{--                        <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">--}}
+{{--                            <!-- <h5 class="footer-head">Company</h5>--}}
+{{--                            <ul class="list-unstyled footer-list mt-4">--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Team</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Pricing</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Project</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Careers</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>--}}
+{{--                            </ul> -->--}}
+{{--                        </div><!--end col-->--}}
 
-                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                            <!-- <h5 class="footer-head">Usefull Links</h5>
-                            <ul class="list-unstyled footer-list mt-4">
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Documentation</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Changelog</a></li>
-                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Components</a></li>
-                            </ul> -->
-                        </div><!--end col-->
+{{--                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">--}}
+{{--                            <!-- <h5 class="footer-head">Usefull Links</h5>--}}
+{{--                            <ul class="list-unstyled footer-list mt-4">--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Documentation</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Changelog</a></li>--}}
+{{--                                <li><a href="javascript:void(0)" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Components</a></li>--}}
+{{--                            </ul> -->--}}
+{{--                        </div><!--end col-->--}}
 
-                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                            <!-- <h5 class="footer-head">Newsletter</h5>
-                            <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="foot-subscribe mb-3">
-                                            <label class="form-label">Write your email <span class="text-danger">*</span></label>
-                                            <div class="form-icon position-relative">
-                                                <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                <input type="email" name="email" id="emailsubscribe" class="form-control ps-5 rounded" placeholder="Your email : " required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="d-grid">
-                                            <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary" value="Subscribe">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form> -->
-                        </div><!--end col-->
-                    </div><!--end row-->
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
-    </div><!--end container-->
+{{--                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">--}}
+{{--                            <!-- <h5 class="footer-head">Newsletter</h5>--}}
+{{--                            <p class="mt-4">Sign up and receive the latest tips via email.</p>--}}
+{{--                            <form>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-lg-12">--}}
+{{--                                        <div class="foot-subscribe mb-3">--}}
+{{--                                            <label class="form-label">Write your email <span class="text-danger">*</span></label>--}}
+{{--                                            <div class="form-icon position-relative">--}}
+{{--                                                <i data-feather="mail" class="fea icon-sm icons"></i>--}}
+{{--                                                <input type="email" name="email" id="emailsubscribe" class="form-control ps-5 rounded" placeholder="Your email : " required>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-12">--}}
+{{--                                        <div class="d-grid">--}}
+{{--                                            <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary" value="Subscribe">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </form> -->--}}
+{{--                        </div><!--end col-->--}}
+{{--                    </div><!--end row-->--}}
+{{--                </div>--}}
+{{--            </div><!--end col-->--}}
+{{--        </div><!--end row-->--}}
+{{--    </div><!--end container-->--}}
 
-    <div class="footer-py-30 footer-bar">
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <div class="text-sm-start">
-                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script></p>
-                    </div>
-                </div><!--end col-->
+{{--    <div class="footer-py-30 footer-bar">--}}
+{{--        <div class="container text-center">--}}
+{{--            <div class="row align-items-center">--}}
+{{--                <div class="col-sm-6">--}}
+{{--                    <div class="text-sm-start">--}}
+{{--                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script></p>--}}
+{{--                    </div>--}}
+{{--                </div><!--end col-->--}}
 
-                <!-- <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                    <ul class="list-unstyled text-sm-end mb-0">
-                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/american-ex.png" class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
-                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
-                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/master-card.png" class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
-                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/paypal.png" class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
-                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/visa.png" class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
-                    </ul>
-                </div> -->
-                <!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </div>
-</footer><!--end footer-->
+{{--                <!-- <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">--}}
+{{--                    <ul class="list-unstyled text-sm-end mb-0">--}}
+{{--                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/american-ex.png" class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>--}}
+{{--                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>--}}
+{{--                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/master-card.png" class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>--}}
+{{--                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/paypal.png" class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>--}}
+{{--                        <li class="list-inline-item"><a href="javascript:void(0)"><img src="/landing/images/payments/visa.png" class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>--}}
+{{--                    </ul>--}}
+{{--                </div> -->--}}
+{{--                <!--end col-->--}}
+{{--            </div><!--end row-->--}}
+{{--        </div><!--end container-->--}}
+{{--    </div>--}}
+{{--</footer><!--end footer-->--}}
 <!-- Footer End -->
 
 <!-- Offcanvas Start -->
 <div class="offcanvas offcanvas-end bg-white shadow" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header p-4 border-bottom">
         <h5 id="offcanvasRightLabel" class="mb-0">
-            <img src="/landing/logo.jpg" height="24" class="light-version" alt="">
-            <img src="/landing/logo.jpg" height="24" class="dark-version" alt="">
+            <img src="/assets/images/logo/logo-svg.svg" height="24" class="light-version" alt="">
+            <img src="/assets/images/logo/logo-svg.svg" height="24" class="dark-version" alt="">
         </h5>
         <button type="button" class="btn-close d-flex align-items-center text-dark" data-bs-dismiss="offcanvas" aria-label="Close"><i class="uil uil-times fs-4"></i></button>
     </div>
@@ -873,9 +878,9 @@
             <li><a href="javascript:void(0)" target="_blank" class="btn btn-sm btn-block btn-success mt-2">Admin Dashboard</a></li>
         </ul>
     </div>
-    <!-- <div class="bottom">
-        <a href="javascript: void(0);" class="settings bg-white title-bg-dark shadow d-block"><i class="mdi mdi-cog ms-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>
-    </div> -->
+{{--     <div class="bottom">--}}
+{{--        <a href="javascript: void(0);" class="settings bg-white title-bg-dark shadow d-block"><i class="mdi mdi-cog ms-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>--}}
+{{--    </div>--}}
 </div>
 <!-- end Style switcher -->
 
