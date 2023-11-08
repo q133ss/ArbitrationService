@@ -48,10 +48,10 @@
         <!-- Logo container-->
         <a class="logo" href="/">
                     <span class="logo-light-mode">
-                        <img src="/assets/images/logo/logo-svg.svg" class="l-dark" height="24" alt="">
-                        <img src="/assets/images/logo/logo-svg.svg" class="l-light" height="24" alt="">
+                        <img src="/assets/images/logo/logo-svg.svg" class="l-dark" height="64" alt="">
+                        <img src="/assets/images/logo/logo-svg.svg" class="l-light" height="64" alt="">
                     </span>
-            <img src="/assets/images/logo/logo-svg.svg" height="24" class="logo-dark-mode" alt="">
+            <img src="/assets/images/logo/logo-svg.svg" height="64" class="logo-dark-mode" alt="">
         </a>
 
         <div class="menu-extras">
@@ -113,28 +113,31 @@
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-6 col-12">
                 <div class="title-heading">
-                    <h6 class="text-white-50">UP Upgrade</h6>
-                    <h1 class="fw-bold text-white title-dark mt-2 mb-3">Партнёрская СРА-сеть номер 1 в сфере услуг</h1>
+                    <h6 class="text-white-50">Upgrade</h6>
+                    <h1 class="fw-bold text-white title-dark mt-2 mb-3">CPA-сеть в сфере услуг, где каждое действие приносит прибыль!</h1>
 
                     <div class="row text-white">
                         <div class="col">
-                            <i data-feather="speaker" class="fea icon-sm"></i>
-                            Ремонт бытовой техники
+                            <i data-feather="cast" class="fea icon-sm"></i>
+{{--                            <i data-feather="cast" class="fea icon-sm"></i>--}}
+{{--                            Ремонт бытовой техники--}}
+                            Дезинсекция
                         </div>
                         <div class="col">
                             <i data-feather="tv" class="fea icon-sm"></i>
-                            Ремонт электроники
+                            Мастер на час*
                         </div>
                     </div>
 
                     <div class="row text-white">
                         <div class="col">
                             <i data-feather="tool" class="fea icon-sm"></i>
-                            Муж на час
+                            Сборка мебели*
+{{--                            Муж на час--}}
                         </div>
                         <div class="col">
-                            <i data-feather="cast" class="fea icon-sm"></i>
-                            Дезинсекция
+                            <i data-feather="speaker" class="fea icon-sm"></i>
+                            Ремонт бытовой техники*
                         </div>
                     </div>
 
@@ -371,7 +374,7 @@
                         <div class="flex-1 ms-2">
                             <h5>Полностью автоматизированный личный кабинет</h5>
                             <p class="mb-0 text-muted">
-                                Оплачиваем заявку даже в случае отказа клиента от выезда мастера или от оплаты ремонта.
+                                Оплачиваем заявку даже в случае отказа клиента от оплаты.
                             </p>
                         </div>
                     </div>
@@ -495,24 +498,24 @@
                             <div class="col-lg-4 col-6 my-4">
                                 <div class="counter-box text-center px-lg-4">
                                     <i class="uil uil-users-alt text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="9759">345</span>+</h1>
-                                    <h6 class="counter-head text-white-50">Офферов</h6>
+                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="80">10</span>%</h1>
+                                    <h6 class="counter-head text-white-50">Конверсия</h6>
                                 </div><!--end counter box-->
                             </div><!--end col-->
 
                             <div class="col-lg-4 col-6 my-4">
                                 <div class="counter-box text-center px-lg-4">
                                     <i class="uil uil-schedule text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="15">234</span>+</h1>
-                                    <h6 class="counter-head text-white-50">Рекламодателей</h6>
+                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="25000">22004</span>+</h1>
+                                    <h6 class="counter-head text-white-50">Эженедельные выплаты</h6>
                                 </div><!--end counter box-->
                             </div><!--end col-->
 
                             <div class="col-lg-4 col-6 my-4">
                                 <div class="counter-box text-center px-lg-4">
                                     <i class="uil uil-file-check-alt text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="151">3450</span>+</h1>
-                                    <h6 class="counter-head text-white-50">Успешный кампаний</h6>
+                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="100">80</span>+</h1>
+                                    <h6 class="counter-head text-white-50">Городов</h6>
                                 </div><!--end counter box-->
                             </div><!--end col-->
 
@@ -546,13 +549,13 @@
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card blog rounded border-0 shadow">
                     <div class="position-relative">
-                        <img src="/landing/images/blog/01.jpg" class="card-img-top rounded-top" alt="...">
+                        <img src="/landing/remont.jpg" class="card-img-top rounded-top" alt="...">
                         <div class="overlay rounded-top"></div>
                     </div>
                     <div class="card-body content">
                         <h5><a href="javascript:void(0)" class="card-title title text-dark">Ремонт крупной бытовой техники</a></h5>
                         <div class="post-meta d-flex justify-content-between mt-3">
-                            <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
+                            <a href="#" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
 {{--                    <div class="author">--}}
@@ -565,14 +568,14 @@
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card blog rounded border-0 shadow">
                     <div class="position-relative">
-                        <img src="/landing/images/blog/02.jpg" class="card-img-top rounded-top" alt="...">
+                        <img src="/landing/dezinfekciya-500x410.jpg" class="card-img-top rounded-top" alt="...">
                         <div class="overlay rounded-top"></div>
                     </div>
                     <div class="card-body content">
                         <h5><a href="javascript:void(0)" class="card-title title text-dark">Дезинсекция</a></h5>
                         <div class="post-meta d-flex justify-content-between mt-3">
 
-                            <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
+                            <a href="#" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
 {{--                    <div class="author">--}}
@@ -585,13 +588,13 @@
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card blog rounded border-0 shadow">
                     <div class="position-relative">
-                        <img src="/landing/images/blog/03.jpg" class="card-img-top rounded-top" alt="...">
+                        <img src="/landing/sborka.jpg" class="card-img-top rounded-top" alt="...">
                         <div class="overlay rounded-top"></div>
                     </div>
                     <div class="card-body content">
-                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Ремонт электроники</a></h5>
+                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Сборка мебели</a></h5>
                         <div class="post-meta d-flex justify-content-between mt-3">
-                            <a href="blog-detail.html" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
+                            <a href="#" class="text-muted readmore">Открыть оффер <i class="uil uil-angle-right-b align-middle"></i></a>
                         </div>
                     </div>
 {{--                    <div class="author">--}}
