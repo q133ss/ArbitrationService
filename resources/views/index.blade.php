@@ -27,6 +27,12 @@
 {{--    <link href="/landing/css/colors/default.css" rel="stylesheet" id="color-opt">--}}
     <link href="/landing/css/colors/yellow.css" rel="stylesheet" id="color-opt">
 
+    <style>
+        .blog .position-relative .card-img-top{
+            max-height: 237px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -495,26 +501,26 @@
                         <div class="bg-overlay rounded bg-primary bg-gradient" style="opacity: 0.8;"></div>
 
                         <div class="row">
-                            <div class="col-lg-4 col-6 my-4">
-                                <div class="counter-box text-center px-lg-4">
+                            <div class="col-lg-6 col-6 my-6">
+                                <div class="counter-box text-center px-lg-6">
                                     <i class="uil uil-users-alt text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="80">10</span>%</h1>
-                                    <h6 class="counter-head text-white-50">Конверсия</h6>
+                                    <h1 class="mb-0 text-white">До <span class="counter-value" data-target="80">10</span>%</h1>
+                                    <h6 class="counter-head text-white-50">Высокая конверсия</h6>
                                 </div><!--end counter box-->
                             </div><!--end col-->
 
-                            <div class="col-lg-4 col-6 my-4">
-                                <div class="counter-box text-center px-lg-4">
-                                    <i class="uil uil-schedule text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="25000">22004</span>+</h1>
-                                    <h6 class="counter-head text-white-50">Эженедельные выплаты</h6>
-                                </div><!--end counter box-->
-                            </div><!--end col-->
+{{--                            <div class="col-lg-4 col-6 my-4">--}}
+{{--                                <div class="counter-box text-center px-lg-4">--}}
+{{--                                    <i class="uil uil-schedule text-white-50 h2"></i>--}}
+{{--                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="25000">22004</span>+</h1>--}}
+{{--                                    <h6 class="counter-head text-white-50">Эженедельные выплаты</h6>--}}
+{{--                                </div><!--end counter box-->--}}
+{{--                            </div><!--end col-->--}}
 
-                            <div class="col-lg-4 col-6 my-4">
-                                <div class="counter-box text-center px-lg-4">
+                            <div class="col-lg-6 col-6 my-6">
+                                <div class="counter-box text-center px-lg-6">
                                     <i class="uil uil-file-check-alt text-white-50 h2"></i>
-                                    <h1 class="mb-0 text-white"><span class="counter-value" data-target="100">80</span>+</h1>
+                                    <h1 class="mb-0 text-white">Широкая <br> география <span class="counter-value" data-target="100">80</span>+</h1>
                                     <h6 class="counter-head text-white-50">Городов</h6>
                                 </div><!--end counter box-->
                             </div><!--end col-->
@@ -549,7 +555,7 @@
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card blog rounded border-0 shadow">
                     <div class="position-relative">
-                        <img src="/landing/remont.jpg" class="card-img-top rounded-top" alt="...">
+                        <img src="/landing/remont.png" class="card-img-top rounded-top" alt="...">
                         <div class="overlay rounded-top"></div>
                     </div>
                     <div class="card-body content">

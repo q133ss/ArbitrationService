@@ -70,6 +70,7 @@ class GetCalls extends Command
 //                        ]);
 //                    }
                 }
+                (new \App\Services\TelegramService())->sendMessage("Новый звонок! \n Номер: $call->from_username");
             }
         }
     }

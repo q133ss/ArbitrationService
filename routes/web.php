@@ -104,7 +104,3 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::post('/lead/store', [App\Http\Controllers\Operator\LeadController::class, 'store'])->name('lead.store');
     });
 });
-
-Route::get('/www', function (){
-
-});
