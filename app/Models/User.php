@@ -129,4 +129,9 @@ class User extends Authenticatable
             return '/assets/images/dashboard/profile.jpg';
         }
     }
+
+    public function getOperatorLeads()
+    {
+        return $this->belongsToMany(Lead::class, 'operator_leads', 'operator_id', 'lead_id');
+    }
 }

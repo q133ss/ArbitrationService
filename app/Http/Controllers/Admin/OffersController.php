@@ -43,9 +43,9 @@ class OffersController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['for_partner'] = json_encode($request->for_partner);
-        $data['for_client'] = json_encode($request->for_client);
-        $data['distinctive'] = json_encode($request->distinctive);
+        $data['for_partner'] = json_encode(array_filter($request->for_partner));
+        $data['for_client'] = json_encode(array_filter($request->for_client));
+        $data['distinctive'] = json_encode(array_filter($request->distinctive));
 
         $offer = Offer::create($data);
 
@@ -84,9 +84,9 @@ class OffersController extends Controller
     public function update(StoreRequest $request, string $id)
     {
         $data = $request->validated();
-        $data['for_partner'] = json_encode($request->for_partner);
-        $data['for_client'] = json_encode($request->for_client);
-        $data['distinctive'] = json_encode($request->distinctive);
+        $data['for_partner'] = json_encode(array_filter($request->for_partner));
+        $data['for_client'] = json_encode(array_filter($request->for_client));
+        $data['distinctive'] = json_encode(array_filter($request->distinctive));
         $offer = Offer::findOrFail($id)->update($data);
 
         if($request->file('files') != null) {
@@ -132,9 +132,9 @@ class OffersController extends Controller
 
         if($request->approved == true) {
             $data = $request->validated();
-            $data['for_partner'] = json_encode($request->for_partner);
-            $data['for_client'] = json_encode($request->for_client);
-            $data['distinctive'] = json_encode($request->distinctive);
+            $data['for_partner'] = json_encode(array_filter($request->for_partner));
+            $data['for_client'] = json_encode(array_filter($request->for_client));
+            $data['distinctive'] = json_encode(array_filter($request->distinctive));
             $offer->update($data);
 
             if ($request->file('files') != null) {

@@ -26,21 +26,21 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-label" for="inputName">Имя</label>
-                        <input class="form-control" name="name" id="inputName" value="{{$lead->name}}" type="text" placeholder="Имя">
+                        <input class="form-control" name="name" id="inputName" value="{{$lead->name ?? old('name')}}" type="text" placeholder="Имя">
                     </div>
                     <div class="col-md-12">
                         <label class="form-label" for="inputEmail4">Город</label>
-                        <input class="form-control" value="{{$lead->city}}" name="city" id="inputEmail4" type="text" placeholder="Город">
+                        <input class="form-control" value="{{$lead->city ?? old('city')}}" name="city" id="inputEmail4" type="text" placeholder="Город">
                     </div>
 
                     <div class="col-md-12">
                         <label class="form-label" for="inputEmail5">Адрес</label>
-                        <input class="form-control" value="{{$lead->address}}" name="address" id="inputEmail5" type="text" placeholder="Адрес">
+                        <input class="form-control" value="{{$lead->address ?? old('address')}}" name="address" id="inputEmail5" type="text" placeholder="Адрес">
                     </div>
 
                     <div class="col-md-12">
                         <label class="form-label" for="inputEmail2">Комментарий</label>
-                        <textarea name="comment" class="form-control" id="inputEmail2" cols="30" rows="10">{{$lead->comment}}</textarea>
+                        <textarea name="comment" class="form-control" id="inputEmail2" cols="30" rows="10">{{$lead->comment ?? old('comment')}}</textarea>
                     </div>
 
                     <div class="col-12">
@@ -53,11 +53,17 @@
                         <input class="form-control" name="time" id="cleave-time2" type="text" placeholder="ЧЧ:ММ" value="{{$lead->time}}">
                     </div>
 
+                    <div class="col-12">
+                        <label class="col-form-label" for="price">Сумма которую оплатил клиент</label>
+                        <input class="form-control" name="price" id="price" type="text" placeholder="" value="{{$lead->price ?? old('price')}}">
+                    </div>
+
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Статус</label>
                         @if($lead->status != 'accept')
                         @php
-                        $statuses = ['hold' => 'Не обработан','accept' => 'Принят','cancel' => 'Отклонен'];
+                        $statuses = ['hold' => 'Не обработан', 'work'
+                          => 'В работе' ,'accept' => 'Завершен','cancel' => 'Отклонен'];
                         @endphp
                         <select class="form-select" id="validationCustom04" name="status">
                             @foreach($statuses as $status => $name)

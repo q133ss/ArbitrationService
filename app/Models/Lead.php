@@ -18,7 +18,8 @@ class Lead extends Model
         return match ($this->status) {
             'hold' => 'Не обработан',
             'accept' => 'Принят',
-            'cancel' => 'Отклонен'
+            'cancel' => 'Отклонен',
+            'work' => 'В работе'
         };
     }
 
@@ -45,6 +46,14 @@ class Lead extends Model
                 if($city != 'Города') {
                     $query->where('city', $city);
                 }
+            })
+            ->when($request->query('master_id'), function (Builder $query, $master_id){
+                $query->where('master_id', $master_id);
             });
+    }
+
+    public function master()
+    {
+        return $this->hasOne(User::class, 'id', 'master_id');
     }
 }

@@ -21,7 +21,7 @@ class LeadController extends Controller
                 ->from('offers')
                 ->where('advertiser_id', Auth()->id());
             return $query;
-        })->orderBy('created_at', 'DESC')->get();
+        })->orderBy('id', 'DESC')->get();
         return view('advertiser.leads.index', compact('leads'));
     }
 
@@ -39,7 +39,7 @@ class LeadController extends Controller
             //delete!
             DB::table('numbers_calls')->where('number_from', $lead->phone)->delete();
 
-            if($request->status == 'accept') {
+            if($request->status == 'accept' && !UserOperation::where('lead_id', $lead->id)->where('user_id', Auth()->id())->exists()) {
                 $balance = Auth()->user()->balance;
                 Auth()->user()->update(['balance' => $balance -= $lead->offer->price]);
                 UserOperation::create([

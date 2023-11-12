@@ -37,9 +37,9 @@ class OffersController extends Controller
         ]);
 
         $offerData = $request->validated();
-        $offerData['for_partner'] = json_encode($request->for_partner);
-        $offerData['for_client'] = json_encode($request->for_client);
-        $offerData['distinctive'] = json_encode($request->distinctive);
+        $offerData['for_partner'] = json_encode(array_filter($request->for_partner));
+        $offerData['for_client'] = json_encode(array_filter($request->for_client));
+        $offerData['distinctive'] = json_encode(array_filter($request->distinctive));
         $offer = Offer::findOrFail($id)->update(['approved' => false]);
 
         $data = [];
@@ -102,9 +102,9 @@ class OffersController extends Controller
     public function store(\App\Http\Requests\Adv\OffersController\StoreRequest $request)
     {
         $data = $request->validated();
-        $data['for_partner'] = json_encode($request->for_partner);
-        $data['for_client'] = json_encode($request->for_client);
-        $data['distinctive'] = json_encode($request->distinctive);
+        $data['for_partner'] = json_encode(array_filter($request->for_partner));
+        $data['for_client'] = json_encode(array_filter($request->for_client));
+        $data['distinctive'] = json_encode(array_filter($request->distinctive));
         $data['advertiser_id'] = Auth()->id();
         $data['approved_to_show'] = 0;
 

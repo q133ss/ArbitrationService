@@ -50,6 +50,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/numbers/update', [App\Http\Controllers\Admin\NumbersController::class, 'update'])->name('numbers.get');
         Route::get('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'edit'])->name('numbers.edit');
         Route::post('/numbers/edit/{id}', [App\Http\Controllers\Admin\NumbersController::class, 'updateNumber'])->name('numbers.update');
+        Route::get('/leads', [App\Http\Controllers\Admin\LeadController::class, 'index'])->name('leads');
     });
 
     Route::name('master.')->prefix('master')->middleware('is.master')->group(function (){
@@ -97,6 +98,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
         Route::get('/call/{id}', [App\Http\Controllers\Operator\IndexController::class, 'callShow'])->name('call.show');
         Route::get('/offer/{id}', [App\Http\Controllers\Operator\IndexController::class, 'offerShow'])->name('offer.show');
+
+        Route::get('/leads', [App\Http\Controllers\Operator\LeadController::class, 'index'])->name('lead.index');
+        Route::get('/lead/create', [App\Http\Controllers\Operator\LeadController::class, 'create'])->name('lead.create');
+        Route::post('/lead/store', [App\Http\Controllers\Operator\LeadController::class, 'store'])->name('lead.store');
     });
 });
 

@@ -24,12 +24,12 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'string|max:255',
             'city' => 'string|max:255',
-            'status' => 'in:hold,accept,cancel',
-
+            'status' => 'in:hold,work,accept,cancel',
             'date' => 'nullable|date_format:d-m-Y',
             'time' => 'nullable|date_format:H:i',
             'address' => 'nullable|string',
-            'comment' => 'nullable|string'
+            'comment' => 'nullable|string',
+            'price' => 'required|integer|min:1'
         ];
     }
 
@@ -47,7 +47,11 @@ class UpdateRequest extends FormRequest
             'date.date_format' => 'Неверный формат даты',
             'time.date_format' => 'Неверный формат времени',
             'address.string' => 'Адрес должен быть строкой',
-            'comment.string' => 'Комментарий должен быть строкой'
+            'comment.string' => 'Комментарий должен быть строкой',
+
+            'price.required' => 'Введите сумму',
+            'price.integer' => 'Сумма должна быть числом',
+            'price.min' => 'Сумма должна быть больше 1',
         ];
     }
 }
