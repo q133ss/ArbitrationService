@@ -26,7 +26,7 @@
                             <tr>
                                 <th scope="row">{{$call->id}}</th>
                                 <td>{{$call->number_from}}</td>
-                                <td><a href="{{route('operator.offer.show', $call->offer_id)}}">{{$call->offer_name}}</a></td>
+                                <td><a href="{{$call->offer_id ? route('operator.offer.show', $call->offer_id) : '#'}}">{{$call->offer_name ?? '---'}}</a></td>
                                 <td>{{$call->duration}}</td>
                                 <td>{{\Carbon\Carbon::parse($call->created_at)->format('d.m.Y H:i')}}</td>
                                 <td>
