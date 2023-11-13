@@ -49,6 +49,11 @@ class Lead extends Model
             })
             ->when($request->query('master_id'), function (Builder $query, $master_id){
                 $query->where('master_id', $master_id);
+            })
+            ->when($request->query('date'), function (Builder $query, $date){
+                $start = stristr($date, ' -', true);
+                $end = mb_substr(stristr($date, ' -', false), 3, 10);
+                $query->where('created_at', '>' ,Carbon::parse($start)->format('Y-m-d H:i'))->where('created_at', '<' , Carbon::parse($end)->format('Y-m-d H:i'));
             });
     }
 

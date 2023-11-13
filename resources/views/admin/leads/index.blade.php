@@ -12,7 +12,8 @@
         $offers = \App\Models\Offer::whereIn('id', $leads->pluck('offer_id')->all())->get();
         @endphp
         <div class="row mb-2 mt-2 justify-content-center">
-            <form class="col-sm-11 pl-1 pr-1" action="{{route('admin.leads')}}" style="display: flex">
+            <form class="col-sm-10 pl-1 pr-1" action="{{route('admin.leads')}}" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-column-gap: 30px">
+                <input class="datepicker-here form-control digits w-100 dates_inp" placeholder="Дата" value="{{\Request()->date}}" type="text" name="date" data-range="true" data-multiple-dates-separator=" - " data-language="ru">
                 <select class="form-control" name="master_id" id="ss">
                     <option value="" disabled selected>Мастер</option>
                     @foreach($masters as $master)
@@ -28,6 +29,9 @@
                 <button class="btn btn-primary">Фильтр</button>
             </form>
         </div>
+            @if(\Request()->date != null)
+                Сумма за выбранный период: {{$leads->sum('price')}}
+            @endif
         <div class="card-block row">
             <div class="col-sm-12 col-lg-12 col-xl-12">
                 <div class="table-responsive">
