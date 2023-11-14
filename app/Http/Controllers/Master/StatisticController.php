@@ -32,14 +32,31 @@ class StatisticController extends Controller
             $data[$key]['cancels'] = $leads->where('offer_id', $offer->id)->where('status', 'cancel')->count();
 
 
-            $hold = $offer->price *
-                $calls->where('number_id',
-                    $user->numbers->where('offer_id', $offer->id)->pluck('id')->first()
-                )->count();
+//            $hold = $offer->price *
+//                $calls->where('number_id',
+//                    $user->numbers->where('offer_id', $offer->id)->pluck('id')->first()
+//                )->count();
+            $holdCalls = DB::table('numbers_calls')->whereIn('number_id', function ($query) use ($offer, $user){
+                return $query->select('id')
+                    ->from('numbers')
+                    ->where('offer_id', $offer->id)
+                    ->where('user_id', $user->id)
+                    ->get();
+            })->where('approved', 1)
+            ->count();
+            $holdLeads = Lead::where('offer_id', $offer->id)->where('master_id', $user->id)->where('status', 'hold')->count();
+
+            $holdSum = $holdCalls + $holdLeads;
+
+            $hold = $holdSum * $offer->price;
+
+            //ждоин оффер прайс
 
 
-            $hold += $offer->price * $leads->where('offer_id', $offer->id)->count();
-            $data[$key]['hold'] = $hold; //сумма холда = колво звонков на прайс
+//            $hold += $offer->price * $leads->where('offer_id', $offer->id)->count();
+
+            $data[$key]['hold'] = $hold;
+            //холд это лиды + number_calls
             $data[$key]['sum'] = $leads->where('offer_id', $offer->id)->where('status', 'accept')->count() * $offer->price; //принятые лиды на прйс
         }
         return view('master.statistics', compact('data'));

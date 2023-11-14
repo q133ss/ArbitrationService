@@ -3,8 +3,8 @@
 @section('content')
 {{--    <div class="card">--}}
     <div class="card">
-        @include('webmaster.inc.statistic.nav')
-        <hr>
+{{--        @include('webmaster.inc.statistic.nav')--}}
+{{--        <hr>--}}
 
         <form action="{{route('dashboard')}}" method="GET" id="submitForm">
             <input type="hidden" name="offer_id" id="offer_id">
