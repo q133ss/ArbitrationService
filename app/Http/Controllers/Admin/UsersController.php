@@ -73,7 +73,7 @@ class UsersController extends Controller
             unset($data['password']);
         }
         User::findOrFail($id)->update($data);
-        return to_route('admin.users.edit', $id);
+        return to_route('admin.users.edit', $id)->withSuccess('Пользователь успешно обновлен');
     }
 
     public function balance(BalanceRequest $request, int $id)

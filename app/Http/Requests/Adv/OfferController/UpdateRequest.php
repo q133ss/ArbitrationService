@@ -29,7 +29,8 @@ class UpdateRequest extends FormRequest
             'time' => 'nullable|date_format:H:i',
             'address' => 'nullable|string',
             'comment' => 'nullable|string',
-            'price' => 'required|integer|min:1'
+            'price' => 'required|integer|min:1',
+            'cost' => 'required|integer|min:1',
         ];
     }
 
@@ -52,6 +53,10 @@ class UpdateRequest extends FormRequest
             'price.required' => 'Введите сумму',
             'price.integer' => 'Сумма должна быть числом',
             'price.min' => 'Сумма должна быть больше 1',
+
+            'cost.required' => 'Введите себестоимость',
+            'cost.integer' => 'Себестоимость должна быть числом',
+            'cost.min' => 'Себестоимость должна быть больше 1',
         ];
     }
 }

@@ -34,6 +34,7 @@ class UpdateRequest extends FormRequest
                     }
                 }
             ],
+            'percent' => 'min:0|integer',
             'password' => 'nullable|string|min:8',
             'role_id' => 'required|integer|exists:roles,id',
             'confirmed' => 'nullable'
@@ -52,7 +53,9 @@ class UpdateRequest extends FormRequest
             'password.min' => 'Пароль должен состоять как минимум из 8 символов',
             'role_id.required' => 'Выберите роль',
             'role_id.integer' => 'Роль должна быть числом',
-            'role_id.exists' => 'Указанной роли не существует'
+            'role_id.exists' => 'Указанной роли не существует',
+            'percent.min' => 'Процент должен быть больше 0',
+            'percent.integer' => 'Процент должен быть числом'
         ];
     }
 }

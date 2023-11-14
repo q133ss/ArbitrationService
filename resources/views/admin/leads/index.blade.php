@@ -43,6 +43,7 @@
                             <th scope="col">Оффер</th>
                             <th scope="col">Мастер</th>
                             <th scope="col">Сумма</th>
+                            <th scope="col">Себестоимость</th>
                             <th scope="col">Статус</th>
                         </tr>
                         </thead>
@@ -54,6 +55,7 @@
                                 <td><a href="{{route('admin.offers.edit', $lead->offer->id)}}">{{$lead->offer->name}}</a></td>
                                 <td><a href="{{route('admin.users.show', $lead->master->id)}}">{{$lead->master->name}}</a></td>
                                 <td>{{$lead->price}}</td>
+                                <td>{{$lead->cost}}</td>
                                 <td>{{$lead->getStatus()}}</td>
                             </tr>
                         @endforeach

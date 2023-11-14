@@ -58,6 +58,11 @@
                         <input class="form-control" name="price" id="price" type="text" placeholder="" value="{{$lead->price ?? old('price')}}">
                     </div>
 
+                    <div class="col-12">
+                        <label class="col-form-label" for="cost">Себестоимость</label>
+                        <input class="form-control" name="cost" id="cost" type="text" placeholder="" value="{{$lead->cost ?? old('cost')}}">
+                    </div>
+
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Статус</label>
                         @if($lead->status != 'accept')

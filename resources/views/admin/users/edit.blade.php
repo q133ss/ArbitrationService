@@ -42,6 +42,12 @@
                             @endforeach
                         </select>
                     </div>
+                    @if($user->role->tech_name == 'advertiser')
+                    <div class="col-md-12">
+                        <label class="form-label" for="inputPassword4">Процент комиссии</label>
+                        <input class="form-control" name="percent" id="inputPassword4" type="text" placeholder="0" value="{{$user->percent}}">
+                    </div>
+                    @endif
                     <div class="col-md-12">
                         <label class="form-label" for="inputPassword4">Подтвердить профиль?</label>
                         <div class="mb-3 d-flex gap-3 checkbox-checked">
