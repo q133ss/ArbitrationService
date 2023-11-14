@@ -15,7 +15,8 @@ class LeadController extends Controller
     public function index()
     {
         $leads = Auth()->user()->getOperatorLeads;
-        return view('operator.leads.index', compact('leads'));
+        $name = 'Мои лиды';
+        return view('operator.leads.index', compact('leads', 'name'));
     }
 
     public function create()
@@ -35,5 +36,23 @@ class LeadController extends Controller
         $lead = Lead::create($request->validated());
         DB::table('operator_leads')->insert(['lead_id' => $lead->id, 'operator_id' => Auth()->id()]);
         return to_route('lead.index')->withSuccess('Лид успешно добавлен');
+    }
+
+    public function masterLeads()
+    {
+        $leads = Lead::where('approved', false)->get();
+        $name = 'Лиды';
+        $approved = true;
+        return view('operator.leads.index', compact('leads', 'name', 'approved'));
+    }
+
+    public function action(int $id, string $action)
+    {
+        if($action == false){
+            Lead::findOrFail($id)->delete();
+        }else {
+            Lead::findOrFail($id)->update(['approved' => $action]);
+        }
+        return back()->withSuccess('Лид успешно обработан!');
     }
 }

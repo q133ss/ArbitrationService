@@ -100,7 +100,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/offer/{id}', [App\Http\Controllers\Operator\IndexController::class, 'offerShow'])->name('offer.show');
 
         Route::get('/leads', [App\Http\Controllers\Operator\LeadController::class, 'index'])->name('lead.index');
+        Route::get('/masters/leads', [App\Http\Controllers\Operator\LeadController::class, 'masterLeads'])->name('leads.index');
         Route::get('/lead/create', [App\Http\Controllers\Operator\LeadController::class, 'create'])->name('lead.create');
         Route::post('/lead/store', [App\Http\Controllers\Operator\LeadController::class, 'store'])->name('lead.store');
+
+        Route::get('/leads/{id}/{action}', [App\Http\Controllers\Operator\LeadController::class, 'action'])->name('leads.action');
     });
 });

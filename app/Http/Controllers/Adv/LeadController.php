@@ -21,7 +21,7 @@ class LeadController extends Controller
                 ->from('offers')
                 ->where('advertiser_id', Auth()->id());
             return $query;
-        })->orderBy('id', 'DESC')->get();
+        })->where('approved', true)->orderBy('id', 'DESC')->get();
         return view('advertiser.leads.index', compact('leads'));
     }
 
